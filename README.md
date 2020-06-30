@@ -47,7 +47,7 @@
 |shipping_first_name|string|null: false|
 |shipping_family_name_kana|string|null: false|
 |shipping_first_name_kana|string|null: false|
-|zip|integer(7)|null: false|
+|postal_code|integer(7)|null: false|
 |state_province|string|null: false|
 |city|string|null: false|
 |street|string|null: false|
@@ -68,10 +68,10 @@
 |category|references|null: false, foreign_key: true|
 |item_condition|references|null: false, foreign_key: true|
 |delivery_burden|references|null: false, foreign_key: true|
-|delivery_method|references||
+|delivery_method|references|null: false, foreign_key: true|
 |shippers|references|null: false, foreign_key: true|
 |shipping_day|references|null: false, foreign_key: true|
-|size|references||
+|size|references|null: false, foreign_key: true|
 |seller (current_user_id)|references|null: false, foreign_key: true|
 |buyer (current_user_id)|integer|foreign_key: true|
 |deal_closed_date|timestamp||
@@ -106,6 +106,7 @@
 <!-- ancestry使用 -->
 ### Association
 - has_many :items
+- has_ancestry
 
 
 ## Brandsテーブル
