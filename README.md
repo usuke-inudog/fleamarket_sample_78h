@@ -34,11 +34,7 @@
 ## Credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false, unique: true|
-|card_name|string|null: false|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_code|integer|null: false|
+|credit_info (pay.jp)|integer|null: false, unique: true|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -55,8 +51,8 @@
 |state_province|string|null: false|
 |city|string|null: false|
 |street|string|null: false|
-|other|string||
-|phone_number|integer|null: false|
+|building_number|string||
+|phone_number|string|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
