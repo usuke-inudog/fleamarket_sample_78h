@@ -136,6 +136,14 @@
 - has_many :items
 
 
+## Delivery_methodsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|method|string||
+### Association
+- has_many :items
+
+
 ## Shippersテーブル
 |Column|Type|Options|
 |------|----|-------|
