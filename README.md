@@ -76,9 +76,8 @@
 |shippers_id|references|null: false, foreign_key: true|
 |shipping_day_id|references|null: false, foreign_key: true|
 |size_id|references||
-<!-- seller,buyerはusersテーブルから？ -->
-|seller (user_id)|references|null: false, foreign_key: true|
-|buyer (user_id)|references|null: false, foreign_key: true|
+|seller (current_user_id)|references|null: false, foreign_key: true|
+|buyer (current_user_id)|references|null: false, foreign_key: true|
 |deal_closed_date|timestamp||
 ### Association
 - belongs_to :brand
