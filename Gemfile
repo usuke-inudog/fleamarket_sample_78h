@@ -54,4 +54,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-# 香川 加治木 齋藤
+# 加治木 齋藤
