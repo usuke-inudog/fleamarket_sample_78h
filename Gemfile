@@ -56,4 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 加治木 齋藤
 
-# 問題なし！！
+# 問題なし！！です！
