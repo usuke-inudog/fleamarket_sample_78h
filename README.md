@@ -106,7 +106,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
-|ancestry
+|ancestry|||
 <!-- ancestry使用 -->
 ### Association
 - has_many :items
