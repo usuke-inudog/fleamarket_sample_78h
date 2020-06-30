@@ -8,10 +8,10 @@
 |email|string|null: false, unique: true|
 |password|string|null:false|
 ### Association
-- belongs_to :profile
-- belongs_to :credit_card
+- has_one :profile
+- has_one :credit_card
 - has_many :items
-- belongs_to :shipping_address
+- has_one :shipping_address
 
 
 ## Profilesテーブル
@@ -26,7 +26,7 @@
 |birth_day|date|null: false|
 |introduction|text||
 |avatar|string||
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -39,7 +39,7 @@
 |expiration_year|integer|null: false|
 |expiration_month|integer|null: false|
 |security_code|integer|null: false|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -57,7 +57,7 @@
 |street|string|null: false|
 |other|string||
 |phone_number|integer|null: false|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -68,14 +68,14 @@
 |name|string|null: false|
 |introduction|text|null: false|
 |price|integer|null: false|
-|brand_id|references|foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
-|item_condition_id|references|null: false, foreign_key: true|
-|delivery_burden_id|references|null: false, foreign_key: true|
-|delivery_method_id|references||
-|shippers_id|references|null: false, foreign_key: true|
-|shipping_day_id|references|null: false, foreign_key: true|
-|size_id|references||
+|brand|references|foreign_key: true|
+|category|references|null: false, foreign_key: true|
+|item_condition|references|null: false, foreign_key: true|
+|delivery_burden|references|null: false, foreign_key: true|
+|delivery_method|references||
+|shippers|references|null: false, foreign_key: true|
+|shipping_day|references|null: false, foreign_key: true|
+|size|references||
 |seller (current_user_id)|references|null: false, foreign_key: true|
 |buyer (current_user_id)|integer|foreign_key: true|
 |deal_closed_date|timestamp||
