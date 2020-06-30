@@ -56,7 +56,7 @@
 |city|string|null: false|
 |street|string|null: false|
 |other|string||
-|phone_number|integer|null: false, unique: true|
+|phone_number|integer|null: false|
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -77,7 +77,7 @@
 |shipping_day_id|references|null: false, foreign_key: true|
 |size_id|references||
 |seller (current_user_id)|references|null: false, foreign_key: true|
-|buyer (current_user_id)|references|null: false, foreign_key: true|
+|buyer (current_user_id)|integer|foreign_key: true|
 |deal_closed_date|timestamp||
 ### Association
 - belongs_to :brand
