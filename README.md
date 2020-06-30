@@ -51,7 +51,7 @@
 |shipping_first_name|string|null: false|
 |shipping_family_name_kana|string|null: false|
 |shipping_first_name_kana|string|null: false|
-|postal_code|integer|null: false|
+|zip|integer(7)|null: false|
 |state_province|string|null: false|
 |city|string|null: false|
 |street|string|null: false|
