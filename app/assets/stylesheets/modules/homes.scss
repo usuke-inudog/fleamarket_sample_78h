@@ -1,0 +1,85 @@
+*{
+  box-sizing: border-box;
+}
+// ヘッダー
+.header{
+  height: 100px;
+  padding: 0px 60px;
+  display: flex;
+  justify-content: center;
+  .header-inner{
+    max-width: 1040px;
+    width: 100%;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 15px 0 0;
+    .header-main{
+      display: flex;
+      align-items: center;
+      &__logo{
+        width: auto;
+        height: 40px;
+        margin-right: 30px;
+        border-radius: 4px;
+      }
+      &__search-box{
+        width: 100%;
+        margin-left: auto;
+        form{
+          display: flex;
+          width: 100%;
+          margin-top: 5px;
+        }
+        &--input{
+          height: 36px;
+          width: calc(100% - 26px);
+          padding: 0 0 0 5px;
+        }
+        &--submit{
+          background-color: #3CCACE;
+          width: 36px;
+          border: 0;
+          cursor: pointer;
+          padding: 8px;
+        }
+      }
+    }
+    .header-navigation{
+      display: flex;
+      font-size: 14px;
+      margin-bottom: 10px;
+      justify-content: space-between;
+      margin-top: 15px;
+      font-size: 13px;
+      .search-list{
+        display: flex;
+        text-decoration: none;
+        list-style: none;
+        padding: 0;
+        a{
+          color: #333;
+          line-height: 32px;
+          padding-right: 30px;
+        }
+        &__category{
+          margin-right: 45px;
+        }
+      }
+      .login-box{
+        display: flex;
+        margin-left: auto;
+        list-style: none;
+        a{
+          color: #333;
+          line-height: 32px;
+          padding-right: 30px;
+        }
+        &__login{
+          margin-right: 15px;
+        }
+        &__registration{
+        }
+      }
+    }
+  }
+}
