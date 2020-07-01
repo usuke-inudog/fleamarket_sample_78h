@@ -78,157 +78,176 @@
       ほしかったあの商品に出会えるかもしれません。
     .sub-iconbox
       =image_tag '/assets/icon/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class:'sub-iconbox__apple'
-      =image_tag '/assets/icon/google-play-badge.png', class:'sub-iconbox__googole'
+      =image_tag '/assets/icon/google-play-badge.png', class:'sub-iconbox__google'
   .fuature-box
-    .fuature-box_headling
-      FURIMAの特徴
-    .first-fuature
-      = image_tag '/assets/icon/icon-01.png', class:'first-fuature__image'
-      .first-fuature__title
-        簡単に売り買いできる
-      .first-fuature__text
-        スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
-    .second-fuature
-      = image_tag '/assets/icon/icon-02.png', class:'second-fuature__image'
-      .second-fuature__title
-        売上金は即日振込みに対応
-      .second-fuature__text
-        午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
-    .third-fuature
-      = image_tag '/assets/icon/icon-03.png', class:'third-fuature__image'
-      .third-fuature__title
-        様々な支払いに対応
-      .third-fuature__text
-        お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    .fuature-headline
+      .fuature-headline__text
+        %h2 FURIMAの特徴
+    .future-container
+      .first-fuature
+        = image_tag '/assets/icon/icon-01.png', class:'first-fuature__image'
+        .first-fuature__headline
+          %h3 簡単に売り買いできる
+        .first-fuature__text
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      .second-fuature
+        = image_tag '/assets/icon/icon-03.png', class:'second-fuature__image'
+        .second-fuature__headline
+          %h3 売上金は即日振込みに対応
+        .second-fuature__text
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      .third-fuature
+        = image_tag '/assets/icon/icon-04.png', class:'third-fuature__image'
+        .third-fuature__headline
+          %h3 様々な支払いに対応
+        .third-fuature__text
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   .pickup-categories
     .pickup-categories__headline
-      ピックアップカテゴリー
-    .pickup-categories__link
+      %h2 ピックアップカテゴリー
+    = link_to '#', class:'pickup-categories__link' do
       新規投稿
     .pickup-categories__container
       .category-item-box
-        =image_tag '',class:'category-item-box__image'
+        = image_tag '/assets/icon/fuku_tatamu.png', class:'category-item-box__image'
         .category-item-box__name
           ee
         .category-item-box__bottom-box
           .category-item-price
             1000円
-            (税込)
-          .category-item-favorite
-            ★ 0
+            %br
+            %span (税込)
+          .category-item-favorites
+            = icon('fas','star')
+            0
       .category-item-box
-        .category-item-box__image
+        = image_tag '/assets/icon/kodomofuku_boy.png', class:'category-item-box__image'
         .category-item-box__name
           product3
         .category-item-box__bottom-box
           .category-item-price
             30000円
-            (税込)
-          .category-item-favorite
-            ★ 0
+            %br
+            %span (税込)
+          .category-item-favorites
+            = icon('fas','star')
+            0
       .category-item-box
-        .category-item-box__image
+        = image_tag '/assets/icon/fashion_sagyougi.png', class:'category-item-box__image'
         .category-item-box__name
           product2
         .category-item-box__bottom-box
           .category-item-price
             20000円
-            (税込)
-          .category-item-favorite
-            ★ 0
+            %br
+            %span (税込)
+          .category-item-favorites
+            = icon('fas','star')
+            0
       .category-item-box
-        .category-item-box__image
+        = image_tag '/assets/pict/publicdomainq-0007543zgo.jpg', class:'category-item-box__image'
         .category-item-box__name
           product2
         .category-item-box__bottom-box
           .category-item-price
             20000円
-            (税込)
-          .category-item-favorite
-            ★ 1
+            %br
+            %span (税込)
+          .category-item-favorites
+            = icon('fas','star')
+            1
   .pickup-brand
     .pickup-brand__headline
-      ピックアップブランド
-    .pickup-brand__link
+      %h2 ピックアップブランド
+    = link_to '#', class:'pickup-brand__link' do
       アーカイバ
     .pickup-brand__container
       .brand-item-box
-        .brand-item-box__image
+        = image_tag '/assets/icon/fuku_tatamu.png', class:'brand-item-box__image'
         .brand-item-box__name
           ee
         .brand-item-box__bottom-box
           .brand-item-price
             1000円
-            (税込)
-          .brand-item-favorite
-            ★ 0
+            %br
+            %span (税込)
+          .brand-item-favorites
+            = icon('fas','star')
+            0
       .brand-item-box
-        .brand-item-box__image
+        = image_tag '/assets/icon/fashion_sagyougi.png', class:'brand-item-box__image'
         .brand-item-box__name
           product3
         .brand-item-box__bottom-box
           .brand-item-price
             30000円
-            (税込)
-          .brand-item-favorite
-            ★ 0
+            %br
+            %span (税込)
+          .brand-item-favorites
+            = icon('fas','star')
+            0
       .brand-item-box
-        .brand-item-box__image
+        = image_tag '/assets/icon/kodomofuku_boy.png', class:'brand-item-box__image'
         .brand-item-box__name
           product2
         .brand-item-box__bottom-box
           .brand-item-price
             20000円
-            (税込)
-          .brand-item-favorite
-            ★ 0
+            %br
+            %span (税込)
+          .brand-item-favorites
+            = icon('fas','star')
+            0
       .brand-item-box
-        .brand-item-box__image
+        = image_tag '/assets/pict/publicdomainq-0007543zgo.jpg', class:'brand-item-box__image'
         .brand-item-box__name
           product1
         .brand-item-box__bottom-box
           .brand-item-price
             10000円
-            (税込)
-          .brand-item-favorite
-            ★ 1
+            %br
+            %span (税込)
+          .brand-item-favorites
+            = icon('fas','star')
+            1
+  .bottom-image
+    .bottom-image__headline
+      %h2 だれでもかんたん、人生を変えるフリマアプリ
+    .bottom-image__text
+      今すぐ無料ダウンロード！
+    .bottom-icons
+      =image_tag '/assets/icon/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class:'bottom-icons__apple'
+      =image_tag '/assets/icon/google-play-badge.png', class:'bottom-icons__google'
 -# フッターは部分テンプレートにする
 .footer
-  .footer-image
-    .footer-image__text
-      だれでもかんたん、人生を変えるフリマアプリ
-    .footer-image__headline
-      今すぐ無料ダウンロード！
-    .footer-icons
-      .footer-icons__apple
-      .footer-icons__google
-  .footer-info
-    .link-box
-      .about-furima
-        .about-furima__headline
-          FURIMAについて
-        .about-furima__company-outline
-          会社概要（運営会社）
-        .about-furima__privacypolicy
-          プライバシーポリシー
-        .about-furima__rule
-          FURIMA利用規約
-        .about-furima__pointrule
-          ポイントに関する特約
-      .look-furima
-        .look-furima__headline
-          FURIMAを見る
-        .look-furima__categories
-          カテゴリー一覧
-        .look-furima__brands
-          ブランド一覧
-      .help-guide
-        .help-guide__headline
-          ヘルプ＆ガイド
-        .help-guide__user-guide
-          FURIMAガイド
-        .help-guide__logo-guideline
-          FURIMAロゴ利用ガイドライン
-        .help-guide__info
-          お知らせ
-  =image_tag '/assets/logo/logo-white.png', class:'footer-logo'
+  .link-box
+    .about-furima
+      .about-furima__headline
+        %h2 FURIMAについて
+      =link_to '#', class:'about-furima__company-outline' do
+        会社概要（運営会社）
+      =link_to '#', class:'about-furima__privacypolicy' do
+        プライバシーポリシー
+      =link_to '#', class:'about-furima__rule' do
+        FURIMA利用規約
+      =link_to '#', class:'about-furima__pointrule' do
+        ポイントに関する特約
+    .look-furima
+      .look-furima__headline
+        %h2 FURIMAを見る
+      =link_to '#', class:'look-furima__categories' do
+        カテゴリー一覧
+      =link_to '#', class:'look-furima__brands' do
+        ブランド一覧
+    .help-guide
+      .help-guide__headline
+        %h2 ヘルプ＆ガイド
+      =link_to '#', class:'help-guide__user-guide' do
+        FURIMAガイド
+      =link_to '#', class:'help-guide__logo-guideline' do
+        FURIMAロゴ利用ガイドライン
+      =link_to '#', class:'help-guide__info' do
+        お知らせ
+  = image_tag '/assets/logo/logo-white.png', class:'footer-logo'
+  .footer__company-logo
+    © FURIMA
