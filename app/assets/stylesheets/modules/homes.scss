@@ -3,8 +3,8 @@
 }
 // ヘッダー
 .header{
-  height: 100px;
-  padding: 0px 60px;
+  height: 110px;
+  padding: 0px 60px 50px;
   display: flex;
   justify-content: center;
   .header-inner{
@@ -47,16 +47,17 @@
     .header-navigation{
       display: flex;
       font-size: 14px;
-      margin-bottom: 10px;
+      margin-top: 5px;
       justify-content: space-between;
-      margin-top: 15px;
-      font-size: 13px;
+      align-items: center;
       .search-list{
         display: flex;
+        align-items: center;
         text-decoration: none;
         list-style: none;
         padding: 0;
         a{
+          text-decoration: none;
           color: #333;
           line-height: 32px;
           padding-right: 30px;
@@ -70,6 +71,7 @@
         margin-left: auto;
         list-style: none;
         a{
+          text-decoration: none;
           color: #333;
           line-height: 32px;
           padding-right: 30px;
@@ -398,6 +400,11 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
     &__container{
       display: flex;
       justify-content: center;
+      a:link{
+        text-decoration: none;
+        font-size: 16px;
+        color: #333;
+      }
       .category-item-box{
         width: 220px;
         background-color: #fff;
@@ -406,13 +413,11 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
           height: 150px;
           object-fit: contain;
         }
-        a{
-          font-size: 16px;
-          color: #333;
-        }
         &__name{
           overflow: hidden;
           padding: 16px 16px 0;
+          font-size: 16px;
+          color: #333;
         }
         &__bottom-box{
           display: flex;
@@ -421,9 +426,19 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
           .category-item-price{
             overflow: hidden;
             font-size: 16px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
             span{
+              text-decoration: none;
+              color: #333;
               font-size: 10px;
             }
+          }
+          .category-item-favorites{
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
           }
         }
       }
@@ -452,6 +467,11 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
     &__container{
       display: flex;
       justify-content: center;
+      a:link{
+        text-decoration: none;
+        font-size: 16px;
+        color: #333;
+      }
       .brand-item-box{
         width: 220px;
         background-color: #fff;
@@ -461,12 +481,16 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
           object-fit: contain;
         }
         a{
+          text-decoration: none;
           font-size: 16px;
           color: #333;
         }
         &__name{
           overflow: hidden;
           padding: 16px 16px 0;
+          text-decoration: none;
+          font-size: 16px;
+          color: #333;
         }
         &__bottom-box{
           display: flex;
@@ -474,10 +498,19 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
           padding: 0 16px 16px;
           .brand-item-price{
             overflow: hidden;
+            text-decoration: none;
             font-size: 16px;
+            color: #333;
             span{
+              text-decoration: none;
+              color: #333;
               font-size: 10px;
             }
+          }
+          .brand-item-favorites{
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
           }
         }
       }
