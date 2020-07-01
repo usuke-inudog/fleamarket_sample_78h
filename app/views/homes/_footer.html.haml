@@ -1,0 +1,33 @@
+.footer
+  .link-box
+    .about-furima
+      .about-furima__headline
+        %h2 FURIMAについて
+      =link_to '#', class:'about-furima__company-outline' do
+        会社概要（運営会社）
+      =link_to '#', class:'about-furima__privacypolicy' do
+        プライバシーポリシー
+      =link_to '#', class:'about-furima__rule' do
+        FURIMA利用規約
+      =link_to '#', class:'about-furima__pointrule' do
+        ポイントに関する特約
+    .look-furima
+      .look-furima__headline
+        %h2 FURIMAを見る
+      =link_to '#', class:'look-furima__categories' do
+        カテゴリー一覧
+      =link_to '#', class:'look-furima__brands' do
+        ブランド一覧
+    .help-guide
+      .help-guide__headline
+        %h2 ヘルプ＆ガイド
+      =link_to '#', class:'help-guide__user-guide' do
+        FURIMAガイド
+      =link_to '#', class:'help-guide__logo-guideline' do
+        FURIMAロゴ利用ガイドライン
+      =link_to '#', class:'help-guide__info' do
+        お知らせ
+  = link_to '/' do
+    = image_tag '/assets/logo/logo-white.png', class:'footer-logo'
+  .footer__company-logo
+    © FURIMA

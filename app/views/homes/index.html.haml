@@ -1,28 +1,6 @@
 -# ヘッダーは部分テンプレートにする
-.header
-  .header-inner
-    .header-main
-      = link_to '/' do
-        = image_tag '/assets/logo/logo.png', class: 'header-main__logo'
-      .header-main__search-box
-        = form_with url: '#', method: :get, local: true do |f|
-          = f.text_field :keyword, class:'header-main__search-box--input', placeholder:"キーワードから探す"
-          = image_tag '/assets/icon/icon-search 1.png', class:'header-main__search-box--submit'
-      .header-main__submit-btn
-    .header-navigation
-      %ul.search-list
-        %li.search-list__category
-          カテゴリー
-        = link_to '#' do
-          %li.search-list__brand
-            ブランド
-      %ul.login-box
-        = link_to '#' do
-          %li.login-box__login
-            ログイン
-        = link_to '#' do
-          %li.login-box__registration
-            新規会員登録
+= render 'header'
+
 .toppage-body
   .sell-btn
     .sell-btn__text
@@ -236,37 +214,5 @@
         =image_tag '/assets/icon/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class:'bottom-icons__apple'
       = link_to '#' do
         =image_tag '/assets/icon/google-play-badge.png', class:'bottom-icons__google'
--# フッターは部分テンプレートにする
-.footer
-  .link-box
-    .about-furima
-      .about-furima__headline
-        %h2 FURIMAについて
-      =link_to '#', class:'about-furima__company-outline' do
-        会社概要（運営会社）
-      =link_to '#', class:'about-furima__privacypolicy' do
-        プライバシーポリシー
-      =link_to '#', class:'about-furima__rule' do
-        FURIMA利用規約
-      =link_to '#', class:'about-furima__pointrule' do
-        ポイントに関する特約
-    .look-furima
-      .look-furima__headline
-        %h2 FURIMAを見る
-      =link_to '#', class:'look-furima__categories' do
-        カテゴリー一覧
-      =link_to '#', class:'look-furima__brands' do
-        ブランド一覧
-    .help-guide
-      .help-guide__headline
-        %h2 ヘルプ＆ガイド
-      =link_to '#', class:'help-guide__user-guide' do
-        FURIMAガイド
-      =link_to '#', class:'help-guide__logo-guideline' do
-        FURIMAロゴ利用ガイドライン
-      =link_to '#', class:'help-guide__info' do
-        お知らせ
-  = link_to '/' do
-    = image_tag '/assets/logo/logo-white.png', class:'footer-logo'
-  .footer__company-logo
-    © FURIMA
+
+= render 'footer'
