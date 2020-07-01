@@ -1,9 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "furima"
-set :repo_url, "git@github.com:8hachi8/
-fleamarket_sample_78h.git"
+set :application, "fleamarket_sample_78h"
+set :repo_url, "git@github.com:8hachi8/fleamarket_sample_78h.git"
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
