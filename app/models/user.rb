@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, password_length: 7..128
 
   validates :nickname, presence: true, uniqueness: true
+
+  has_one :profile
+  has_one :credit_card
+  has_many :items
+  has_one :shipping_address
 end
