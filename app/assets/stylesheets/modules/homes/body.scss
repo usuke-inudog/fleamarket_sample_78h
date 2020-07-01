@@ -1,7 +1,7 @@
 *{
   box-sizing: border-box;
 }
-
+// 選ばれる理由画像左上の番号用
 @mixin reason-num{
   height: 55px;
   width: 55px;
@@ -12,6 +12,7 @@
   text-align: center;
   padding-top: 5px;
 }
+// 選ばれる理由見出し用
 @mixin reason-headline{
   font-size: 24px;
   font-weight: bold;
@@ -21,18 +22,22 @@
     color: #3CCACE;
   }
 }
+// 選ばれる理由テキスト用
 @mixin reason-text{
   font-size: 18px;
   margin-top: 16px;
 }
+// appleのバナー用
 @mixin apple-banner{
   width: auto;
   height: 55px;
 }
+// Googleのバナー用
 @mixin google-banner{
   width: auto;
   height: 80px;
 }
+// 見出し下の緑の下線用
 @mixin after-underline{
   content: "";
   width: 70px;
@@ -43,19 +48,29 @@
   left: 50%;
   position: absolute;
 }
+// 特徴見出し用
 @mixin fuature-h3{
   font-weight: bold;
   font-size: 19px;
 }
+// 特徴テキスト用
 @mixin fuature-text{
   margin-bottom: 40px;
   font-weight: 200;
   font-size: 17px;
 }
+// 特徴画像用
 @mixin fuature-image{
   width: 70%;
   height: auto;
 }
+// フォントを黒時の16pxへ変更用
+@mixin font-black16{
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+}
+// 見出しの影出し用
 $font-shadow: 0 0 5px rgba(0,0,0,0.4);
 
 .toppage-body{
@@ -317,9 +332,7 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
       display: flex;
       justify-content: center;
       a:link{
-        text-decoration: none;
-        font-size: 16px;
-        color: #333;
+        @include font-black16
       }
       .category-item-box{
         width: 220px;
@@ -332,8 +345,7 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
         &__name{
           overflow: hidden;
           padding: 16px 16px 0;
-          font-size: 16px;
-          color: #333;
+          @include font-black16
         }
         &__bottom-box{
           display: flex;
@@ -352,9 +364,7 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
             }
           }
           .category-item-favorites{
-            text-decoration: none;
-            font-size: 16px;
-            color: #333;
+            @include font-black16
           }
         }
       }
@@ -404,9 +414,7 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
         &__name{
           overflow: hidden;
           padding: 16px 16px 0;
-          text-decoration: none;
-          font-size: 16px;
-          color: #333;
+          @include font-black16
         }
         &__bottom-box{
           display: flex;
@@ -424,9 +432,7 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
             }
           }
           .brand-item-favorites{
-            text-decoration: none;
-            font-size: 16px;
-            color: #333;
+            @include font-black16
           }
         }
       }
