@@ -1,0 +1,72 @@
+*{
+  box-sizing: border-box;
+}
+
+// footer
+@mixin footer-text{
+  line-height: 32px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
+}
+@mixin footer-headline{
+  margin-bottom: 20px;
+  h2{
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+.footer{
+  background-color: #272727;
+  padding: 60px 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .link-box{
+    display: flex;
+    .about-furima{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      &__headline{
+        @include footer-headline
+      }
+      &__company-outline,&__privacy-policy,&__rule,&__point-rule{
+        @include footer-text
+      }
+    }
+    .look-furima{
+      margin: 0 160px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      &__headline{
+        @include footer-headline
+      }
+      &__categories,&__brands{
+        @include footer-text
+      }
+    }
+    .help-guide{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      &__headline{
+        @include footer-headline
+      }
+      &__user-guide,&__logo-guideline,&__info{
+        @include footer-text
+      }
+    }
+  }
+  .footer-logo{
+    height: 50px;
+    width: auto;
+  }
+  &__company-logo{
+      font-size: 14px;
+      color: #fff;
+  }
+}
