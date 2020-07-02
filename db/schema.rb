@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_075854) do
+ActiveRecord::Schema.define(version: 2020_07_02_085622) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,43 @@ ActiveRecord::Schema.define(version: 2020_07_02_075854) do
     t.string "condition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "item_id", null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
+    t.bigint "brand_id"
+    t.bigint "category_id", null: false
+    t.bigint "item_condition_id", null: false
+    t.bigint "delivery_burden_id", null: false
+    t.bigint "delivery_method_id", null: false
+    t.bigint "shipper_id", null: false
+    t.bigint "shipping_day_id", null: false
+    t.bigint "size_id", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyler_id"
+    t.timestamp "deal_close_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["buyler_id"], name: "index_items_on_buyler_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["delivery_burden_id"], name: "index_items_on_delivery_burden_id"
+    t.index ["delivery_method_id"], name: "index_items_on_delivery_method_id"
+    t.index ["item_condition_id"], name: "index_items_on_item_condition_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
+    t.index ["shipper_id"], name: "index_items_on_shipper_id"
+    t.index ["shipping_day_id"], name: "index_items_on_shipping_day_id"
+    t.index ["size_id"], name: "index_items_on_size_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,6 +144,17 @@ ActiveRecord::Schema.define(version: 2020_07_02_075854) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "item_images", "items"
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "delivery_burdens"
+  add_foreign_key "items", "delivery_methods"
+  add_foreign_key "items", "item_conditions"
+  add_foreign_key "items", "shippers"
+  add_foreign_key "items", "shipping_days"
+  add_foreign_key "items", "sizes"
+  add_foreign_key "items", "users", column: "buyler_id"
+  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "shipping_addresses", "users"
 end
