@@ -49,18 +49,18 @@
   position: absolute;
 }
 // 特徴見出し用
-@mixin fuature-h3{
+@mixin feature-h3{
   font-weight: bold;
   font-size: 19px;
 }
 // 特徴テキスト用
-@mixin fuature-text{
+@mixin feature-text{
   margin-bottom: 40px;
   font-weight: 200;
   font-size: 17px;
 }
 // 特徴画像用
-@mixin fuature-image{
+@mixin feature-image{
   width: 70%;
   height: auto;
 }
@@ -232,12 +232,12 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
     }
   }
-  .fuature-box{
+  .feature-box{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 60px 20px;
-    .fuature-headline{
+    .feature-headline{
       &__text{
         text-align: center;
         line-height: 1.4;
@@ -257,53 +257,53 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
       display: flex;
       justify-content: center;
       padding: 60px 60px;
-      .first-fuature{
+      .first-feature{
         width: 30%;
         &__image{
-          @include fuature-image
+          @include feature-image
         }
         &__headline{
           text-align: center;
           margin: 40px 0 10px;
           h3{
-            @include fuature-h3
+            @include feature-h3
           }
         }
         &__text{
-          @include fuature-text
+          @include feature-text
         }
       }
-      .second-fuature{
+      .second-feature{
         width: 30%;
         margin: 0 20px;
         &__image{
-          @include fuature-image
+          @include feature-image
         }
         &__headline{
           text-align: center;
           margin: 40px 0 10px;
           h3{
-            @include fuature-h3
+            @include feature-h3
           }
         }
         &__text{
-          @include fuature-text
+          @include feature-text
         }
       }
-      .third-fuature{
+      .third-feature{
         width: 30%;
         &__image{
-          @include fuature-image
+          @include feature-image
         }
         &__headline{
           text-align: center;
           margin: 40px 0 10px;
           h3{
-            @include fuature-h3
+            @include feature-h3
           }
         }
         &__text{
-          @include fuature-text
+          @include feature-text
         }
       }
     }
