@@ -33,7 +33,7 @@
       &__headline{
         @include footer-headline
       }
-      &__company-outline,&__privacypolicy,&__rule,&__pointrule{
+      &__company-outline,&__privacy-policy,&__rule,&__point-rule{
         @include footer-text
       }
     }
