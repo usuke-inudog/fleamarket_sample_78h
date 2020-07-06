@@ -34,7 +34,8 @@
 ## Credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|credit_info (pay.jp)|integer|null: false, unique: true|
+|card_token|integer|null: false, unique: true|
+|customer_id|integer|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -137,14 +138,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |method|string||
-### Association
-- has_many :items
-
-
-## Shippersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|shipper|string||
 ### Association
 - has_many :items
 
