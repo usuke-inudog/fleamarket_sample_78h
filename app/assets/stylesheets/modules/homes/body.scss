@@ -438,34 +438,4 @@ $font-shadow: 0 0 5px rgba(0,0,0,0.4);
       }
     }
   }
-  .bottom-image{
-    height: 360px;
-    background: url(/assets/pict/bg-appBanner-pict.jpg)center/cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    &__headline{
-      h2{
-        font-size: 24px;
-        font-weight: bold;
-        text-shadow: $font-shadow;
-      }
-    }
-    &__text{
-      font-size: 35px;
-      text-shadow: $font-shadow;
-    }
-    .bottom-icons{
-      display: flex;
-      align-items: center;
-      &__apple{
-        @include apple-banner
-      }
-      &__google{
-        @include google-banner
-      }
-    }
-  }
 }
