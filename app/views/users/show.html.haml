@@ -1,1 +1,76 @@
-マイページ
+-# ヘッダーは部分テンプレート
+= render "homes/header"
+
+.mypage-body
+  .mypage-container
+    .side
+      .side__box
+        %h2
+          メニュー
+        %table
+          %tr
+            %td
+              = link_to "#" do
+                お知らせ
+          %tr
+            %td
+              = link_to "#" do
+                出品する
+          %tr
+            %td
+              = link_to "#" do
+                商品一覧
+          %tr
+            %td
+              = link_to "#" do
+                購入一覧
+          %tr
+            %td
+              = link_to "#" do
+                お問い合わせ
+
+        %h3
+          設定
+        %table
+          %tr
+            %td
+              = link_to "#" do
+                プロフィール
+          %tr
+            %td
+              = link_to "#" do
+                住所
+          %tr
+            %td
+              = link_to "#" do
+                支払い方法
+          %tr
+            %td
+              = link_to "#" do
+                ログアウト
+
+    .main
+      .main-box
+        .main-header
+          = image_tag "/assets/pict/mypage-header.jpg", class: "main-header__img"
+          .main-header__icon
+            .main-header__icon-avatar
+              = icon("fas", "user-circle")
+            .main-header__icon-nickname
+              ニックネーム
+        .main-tab
+          %h4
+            お知らせ
+        .main-body
+        %ul.contents
+          %li.content
+            レディースシューズ今だけ半額！
+          %li.content
+            ビーフカレー30000円！
+          %li.content
+            テックキャンプ卒業生特別クーポン！
+          %li.content
+            今週の一押し商品！
+
+-# フッターは部分テンプレート
+= render "homes/footer"

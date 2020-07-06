@@ -1,0 +1,95 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.mypage-body {
+  padding: 40px 100px;
+  background-color: #f8f8f8;
+  overflow: scroll;
+}
+
+.mypage-container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto 0;
+}
+
+.side {
+  height: 100%;
+  width: 30%;
+  margin-right: 40px;
+  background-color: #ffff;
+  &__box
+    h2 {
+      padding: 16px;
+      font-weight: 600;
+      background-color: #eee;
+    }
+    h3 {
+      padding: 16px;
+      font-weight: 600;
+      background-color: #eee;
+    }
+}
+
+table {
+  width: 100%;
+}
+
+table td {
+  height: 60px;
+  width: 100%;
+  padding: 16px;
+  border: solid 1px #f8f8f8;
+  color: #ffff;
+}
+
+.main {
+  height: 100%;
+  width: 70%;
+  background-color: #ffff;
+}
+
+.main-box {
+
+}
+
+.main-header {
+  height: 200px;
+  background-color: black;
+  position: relative;
+  &__img {
+    height: 200px;
+    width: 100%;
+  }
+  &__icon {
+    position: absolute;
+  }
+}
+
+.main-tab {
+  height: 60px;
+  background-color: #eee;
+  h4 {
+    font-weight: 600;
+    text-align: center;
+    line-height: 60px;
+  }
+}
+
+.main-body {
+  list-style: none;
+}
+
+.content {
+  height: 60px;
+  padding: 16px;
+  border: solid 1px #f8f8f8;
+}
+
