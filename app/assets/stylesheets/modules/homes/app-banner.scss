@@ -1,7 +1,7 @@
 // apple-banner,google-banner,font-shadowはbodyと共通
 .bottom-image{
   height: 360px;
-  background: url(/assets/pict/bg-appBanner-pict.jpg)center/cover;
+  background: image-url("bg-appBanner-pict.jpg")center/cover;
   display: flex;
   flex-direction: column;
   align-items: center;
