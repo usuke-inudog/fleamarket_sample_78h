@@ -3,10 +3,10 @@ class ShippingAddress < ApplicationRecord
             :postal_code, :state_province, :city, :street, :phone_number, presence: true
 
   validates :shipping_family_name, :shipping_first_name,
-            format: { with: /^[ぁ-んァ-ン一-龥]/ }
+            format: { with: /^[ぁ-んァ-ン一-龥]/, multiline: true }
 
   validates :shipping_family_name_kana, :shipping_first_name_kana,
-            format: { with: /^[ぁ-ん]+$/ }
+            format: { with: /^[ぁ-ん]+$/, multiline: true }
   
   validates :postal_code, length: { is: 7 }
 
