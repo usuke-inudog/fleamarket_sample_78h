@@ -18,7 +18,7 @@
             ブランド
       -if user_signed_in? 
         %ul.login-box
-          = link_to edit_user_registration_path do
+          = link_to user_path(current_user.id) do
             %li.login-box__edit
               マイページ
       -else
