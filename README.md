@@ -72,8 +72,8 @@
 |shippers|references|null: false, foreign_key: true|
 |shipping_day|references|null: false, foreign_key: true|
 |size|references|null: false, foreign_key: true|
-|seller (current_user_id)|references|null: false, foreign_key: true|
-|buyer (current_user_id)|integer|foreign_key: true|
+|seller|references|null: false, foreign_key: {to_table: :users}|
+|buyer|references|foreign_key: {to_table: :users}|
 |deal_closed_date|timestamp||
 ### Association
 - belongs_to :brand
@@ -88,7 +88,7 @@
 - has_many :item_images
 
 
-## Items_imagesテーブル
+## Item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|

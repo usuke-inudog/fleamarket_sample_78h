@@ -10,8 +10,9 @@
       .header-main__submit-btn
     .header-navigation
       %ul.search-list
-        %li.search-list__category
-          カテゴリー
+        = link_to "/categories" do
+          %li.search-list__category
+            カテゴリー
         = link_to '#' do
           %li.search-list__brand
             ブランド
