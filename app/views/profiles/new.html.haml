@@ -1,0 +1,79 @@
+.Wrapper
+  .ProfilePage
+    .ProfilePage__header
+      .ProfilePage__logo
+        = link_to root_path do
+          = image_tag '/assets/logo/logo.png', class: 'header__logo'
+    .ProfilePage__main
+      .ProfilePage__new
+        %h4 プロフィール作成
+
+        = form_with(model: @profile, local: true) do |f|
+          .FormField
+            .FormField__label--normal
+              = f.label :プロフィール画像の設定
+            %p 
+              = image_tag 'https://asset.fril.jp/assets/new_web/icon_user-9e49e957def667b1abdaae57b9e81d66c31b27f8559d80e2eb682cfbb24e18cd.png'
+            .FormField__input--normal
+              = f.file_field :avatar, placeholder: "画像"
+              = f.hidden_field :image_cache
+            %p プロフィール画像に設定したい画像を選択してください
+          .FormField
+            .FormField__label--normal
+              = f.label :名字
+              %span (全角)
+            .FormField__input--normal
+              = f.text_field :family_name, placeholder: "姓"
+          .FormField
+            .FormField__label--normal
+              = f.label :名前
+              %span (全角)
+            .FormField__input--normal
+              = f.text_field :first_name, placeholder: "名"
+          .FormField
+            .FormField__label--normal
+              = f.label :名字かな
+              %span (全角ひらがな)
+            .FormField__input--normal
+              = f.text_field :family_name_kana, placeholder: "せい"
+          .FormField
+            .FormField__label--normal
+              = f.label :名前かな
+              %span (全角ひらがな)
+            .FormField__input--normal
+              = f.text_field :first_name_kana, placeholder: "めい"
+
+          .FormField
+            .FormField__label--normal
+              = f.label :生年月日
+              %span （一度登録すると変更できません）
+            .FormField__input--birthday
+              -# != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+              = f.date_select :birth_year, {prompt:"--", discard_month: true, discard_day: true, use_month_numbers: true}, {class: 'time-box'}
+              = f.date_select :birth_month, {prompt:"--", discard_year: true, discard_day: true, use_month_numbers: true}, {class: 'time-box'}
+              = f.date_select :birth_day, {prompt:"--", discard_month: true, use_month_numbers: true}, {class: 'time-box'}
+          .FormField
+            .FormField__label--normal
+              = f.label :コメント
+              %span （1000文字まで）
+            .FormField__input--normal
+              = f.text_area :introduction, class: 'text_area', placeholder: "気持ちの良い取引ができればと思います！                 よろしくお願いします！"
+
+            .actions
+              = f.submit "プロフィール更新", class: 'Button UserButton'
+    .ProfilePage__footer
+      %nav
+        %ul
+          %li
+            =link_to '#', class:'about-furima__privacy-policy' do
+              プライバシーポリシー
+          %li
+            =link_to '#', class:'about-furima__rule' do
+              FURIMA利用規約
+          %li
+            =link_to '#', class:'about-furima__point-rule' do
+              特定商取引に関する表記
+      = link_to root_path do
+        = image_tag '/assets/logo/logo-white.png', class:'footer-logo'
+      .footer__company-logo
+        © FURIMA
