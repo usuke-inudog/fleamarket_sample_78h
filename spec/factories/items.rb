@@ -1,6 +1,6 @@
 FactoryBot.define do
   
-  Factory :item do
+  factory :item do
     name                  {""}
     introduction          {""}
     price                 {""}
