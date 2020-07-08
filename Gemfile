@@ -64,6 +64,7 @@ gem "font-awesome-sass"
 gem 'devise'
 gem 'pry-rails'
 gem 'ancestry'
+gem "payjp"
 
 group :production do
   gem 'unicorn'

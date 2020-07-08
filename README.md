@@ -34,7 +34,7 @@
 ## Credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_token|integer|null: false, unique: true|
+|card_id|integer|null: false, unique: true|
 |customer_id|integer|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
