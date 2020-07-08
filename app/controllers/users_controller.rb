@@ -1,7 +1,8 @@
-class HomesController < ApplicationController
+class UsersController < ApplicationController
   before_action :set_category
   
-  def index
+  def show
+    @user = User.find(params[:id])
   end
 
   private

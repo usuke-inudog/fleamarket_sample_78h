@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_category
+  
   def index
   end
 
@@ -6,5 +8,10 @@ class ItemsController < ApplicationController
   end
   
   def show
+  end
+
+  private
+  def set_category
+    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 end
