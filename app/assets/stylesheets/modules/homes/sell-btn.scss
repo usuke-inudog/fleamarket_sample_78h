@@ -1,0 +1,18 @@
+.sell-btn{
+  width: 120px;
+  background-color: #3CCACE;
+  right: 32px;
+  bottom: 32px;
+  position: fixed;
+  padding: 15px;
+  border-radius: 4%;
+  text-align: center;
+  &__text{
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  &__icon{
+    width: 60%;
+  }
+}

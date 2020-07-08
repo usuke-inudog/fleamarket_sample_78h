@@ -1,0 +1,145 @@
+= render "homes/header"
+= render 'homes/sell-btn'
+
+.mypage-body
+  .mypage-container
+    .side
+      .side__box
+        %h2
+          メニュー
+        %table
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                お知らせ
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                出品する
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                商品一覧
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                購入一覧
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                取引履歴
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                お問い合わせ
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+        %h3
+          設定
+        %table
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                プロフィール
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                住所
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to "#" do
+                支払い方法
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to edit_user_registration_path, method: :get do
+                アカウント編集
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to destroy_user_session_path, method: :delete do
+                ログアウト
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+    .main
+      .main-box
+        .main-header
+          .main-header__icon
+            .main-header__icon-avatar
+              = icon("fas", "user-circle")
+            .main-header__icon-nickname
+              ニックネーム
+        .main-tab
+          %h4
+            お知らせ
+        .main-body
+        %ul.contents
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              レディースシューズ今だけ半額！
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              ビーフカレー30000円！
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              テックキャンプ卒業生特別クーポン！
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              今週の一押し商品！
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              格安ノートPC多数出品中！（動作保証済み）
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              マイページにアイコン設定機能を追加！
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              弊社スタッフが効率的な梱包方法を紹介！
+          %li.content
+            .content__logo
+              = image_tag "furima.png", size: "30x30"
+            .content__sentence
+              今熱い！鬼滅の刃全巻セット5,000円！
+
+= render "homes/footer"
