@@ -1,10 +1,14 @@
 class CategoriesController < ApplicationController
+  before_action :set_category
+  
   def index
-    # 現在カテゴリーの親階層は13種類のため、limit(13)
-    @parents = Category.order("id ASC").limit(13)
   end
 
   def show
-    
+  end
+
+  private
+  def set_category
+    @parents = Category.where(ancestry: nil).order("id ASC")
   end
 end

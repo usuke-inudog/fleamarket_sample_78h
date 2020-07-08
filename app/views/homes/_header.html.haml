@@ -9,13 +9,10 @@
           = image_tag "icon-search 1.png", class:'header-main__search-box--submit'
       .header-main__submit-btn
     .header-navigation
-      %ul.search-list
-        = link_to "/categories" do
-          %li.search-list__category
-            カテゴリー
-        = link_to '#' do
-          %li.search-list__brand
-            ブランド
+      .search-list
+        = render 'homes/category-tree'
+        = link_to '#', class:"search-list__brand" do
+          ブランド
       -if user_signed_in? 
         %ul.login-box
           = link_to user_path(current_user.id) do
