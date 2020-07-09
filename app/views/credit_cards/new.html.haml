@@ -1,0 +1,46 @@
+.credit-page
+  .credit-header
+    .credit-page__logo
+      = link_to root_path do
+        =image_tag "logo.png", size: "185x50"
+  .credit-body
+    .body-box
+      %h2
+        クレジットカード情報登録
+      = form_with url:credit_cards_path, method: :post, html: { name: "inputForm" },class:"form" do |f|
+        .form__upper
+          .form__upper__group
+            = f.label :カード番号
+            %span.form-require 必須
+            = f.text_field :card_number, name: "card_number", id:"card_number", type: "text", placeholder: '半角数字のみ', class: 'input-default', maxlength: "16"
+          .form__upper__group.exp
+            .name
+              = f.label :有効期限
+              %span.form-require 必須
+            = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]], {}, class: 'input-default harf', name: "exp_year", id:"exp_year"
+            %span 年
+            = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{}, class: 'input-default harf', name: "exp_month", id:"exp_month"
+            %span 月
+          .form__upper__group
+            = f.label :セキュリティーコード
+            %span.form-require 必須
+            = f.text_field :cvc, name: "cvc", id:"cvc", class:"cvc", type: "text", placeholder: 'カード背面4桁もしくは3桁の番号', class: 'input-default', maxlength: "16"
+          .form__upper__group
+            = f.submit '次へ進む', class: 'btn-default', id: "charge-form"
+  .credit-footer
+    .footer-box
+      %nav
+        %ul
+          %li
+            =link_to '#', class:'about-furima__privacy-policy' do
+              プライバシーポリシー
+          %li
+            =link_to '#', class:'about-furima__rule' do
+              FURIMA利用規約
+          %li
+            =link_to '#', class:'about-furima__point-rule' do
+              特定商取引に関する表記
+      = link_to root_path do
+        = image_tag "logo-white.png", class:'bottom-logo'
+      .footer-box__furima-logo
+        © FURIMA
