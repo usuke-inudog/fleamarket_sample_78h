@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:edit]
+  before_action :set_profile, only: [:edit, :update]
   def index
   end
 
@@ -25,11 +25,9 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
         redirect_to root_path
     else
