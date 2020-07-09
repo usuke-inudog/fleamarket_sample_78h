@@ -12,7 +12,7 @@
           .form__upper__group
             = f.label :カード番号
             %span.form-require 必須
-            = f.text_field :card_number, name: "card_number", id:"card_number", type: "text", placeholder: '半角数字のみ', class: 'input-default', maxlength: "16"
+            = f.text_field :card_number, autofocus: true, name: "card_number", id:"card_number", type: "text", placeholder: '半角数字のみ', class: 'input-default', maxlength: "16"
           .form__upper__group.exp
             .name
               = f.label :有効期限
