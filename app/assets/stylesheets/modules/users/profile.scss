@@ -59,7 +59,7 @@ a {
   &__content {
     padding: 24px 16px 40px;    
   }
-  &__label--normal {
+  &__label {
     margin-top: 5px;
     padding: 10px 0 7px 0;
     letter-spacing: 1px;
@@ -74,7 +74,7 @@ a {
       vertical-align: top;
     }
   }
-  &__input--normal {
+  &__input {
     input {
       box-sizing: border-box;
       width: 100%;
@@ -97,7 +97,6 @@ select {
   width: 28%;
   height: 30px;
   margin-left: 12px;
-
 }
 
 .text_area {
