@@ -55,7 +55,7 @@
             必須
         .detail-box__category-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'detail-box__category-input'
+            = f.collection_select :id, Category.all, :id, :name, prompt: "選択して下さい", class: 'detail-box__category-input'
         .detail-box__brand
           %label
             ブランド
@@ -99,7 +99,7 @@
             必須
         .delivery-box__shippers-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'delivery-box__shippers-input'
+            = f.collection_select :id, Prefecture.all, :id, :name, prompt: "選択して下さい", class: 'delivery-box__shippers-input'
         .delivery-box__shipping-day
           %label
             発送までの日数
