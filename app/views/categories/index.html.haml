@@ -1,0 +1,27 @@
+= render 'homes/header'
+= render 'homes/sell-btn'
+.category-body
+  .category-contaner
+    .category-parents
+      - @parents.each do |parent|
+        = link_to  anchor: "#{parent.id}" , class:'category-parents__index' do
+          .category-parents__index--name
+            = parent.name
+    .category-links
+      - @parents.each do |parent|
+        = link_to "#" do
+          .category-links__parent{id: "#{parent.id}"}
+            = parent.name
+        - parent.children.each do |child|
+          = link_to category_path(child.id), class:"category-links__child" do
+            = child.name
+          .contents
+            - child.children.each do |grandchild|
+              = link_to "#", class:'contents__grand-child' do
+                = grandchild.name
+        = link_to "", class:'top-btn' do
+          .top-btn__text
+            = icon('fas','arrow-up')
+            ページトップへ
+= render 'homes/app-banner'
+= render 'homes/footer'

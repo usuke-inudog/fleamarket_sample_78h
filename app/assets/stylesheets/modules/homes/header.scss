@@ -48,10 +48,10 @@
       font-size: 14px;
       margin-top: 5px;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       .search-list{
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         text-decoration: none;
         list-style: none;
         padding: 0;
@@ -61,8 +61,7 @@
           line-height: 32px;
           padding-right: 30px;
         }
-        &__category{
-          margin-right: 45px;
+        &__brand{
         }
       }
       .login-box{

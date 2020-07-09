@@ -32,7 +32,8 @@
 ## Credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|credit_info (pay.jp)|integer|null: false, unique: true|
+|card_id|integer|null: false, unique: true|
+|customer_id|integer|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -70,8 +71,8 @@
 |shippers|references|null: false, foreign_key: true|
 |shipping_day|references|null: false, foreign_key: true|
 |size|references|null: false, foreign_key: true|
-|seller (current_user_id)|references|null: false, foreign_key: true|
-|buyer (current_user_id)|integer|foreign_key: true|
+|seller|references|null: false, foreign_key: {to_table: :users}|
+|buyer|references|foreign_key: {to_table: :users}|
 |deal_closed_date|timestamp||
 ### Association
 - belongs_to :brand
@@ -86,7 +87,7 @@
 - has_many :item_images
 
 
-## Items_imagesテーブル
+## Item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
@@ -135,14 +136,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |method|string||
-### Association
-- has_many :items
-
-
-## Shippersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|shipper|string||
 ### Association
 - has_many :items
 
