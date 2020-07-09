@@ -2,8 +2,14 @@
 @import "modules/homes/header";
 @import "modules/homes/body";
 @import "modules/homes/footer";
-@import "modules/items/show";
+@import "modules/homes/sell-btn.scss";
+@import "modules/homes/app-banner.scss";
+@import "modules/categories/index";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "modules/users/user";
 @import "modules/users/profile";
+@import "modules/items/new";
+@import "modules/users/show";
+@import "modules/items/show";
+@import "modules/homes/category-tree";
