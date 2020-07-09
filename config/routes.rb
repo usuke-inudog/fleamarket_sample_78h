@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
   resources   :categories, only: [:index, :show]
+  resources :credit_cards
 end
