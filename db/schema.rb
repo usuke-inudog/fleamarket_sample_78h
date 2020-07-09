@@ -95,9 +95,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_075831) do
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.date "birth_year", null: false
-    t.date "birth_month", null: false
-    t.date "birth_day", null: false
+    t.date "birthday", null: false
     t.text "introduction"
     t.string "avatar"
     t.bigint "user_id", null: false
