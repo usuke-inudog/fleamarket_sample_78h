@@ -3,8 +3,8 @@
     = render 'header'
     .ProfilePage__main
       .ProfilePage__new
-        %h4 プロフィール作成
-        = form_with model: @profile, local: true do |f|
+        %h4 プロフィール編集
+        = form_with model: @profile, url: profile_path(@profile), method: :PATCH, local: true do |f|
           .FormField
             .FormField__label--normal
               = f.label :プロフィール画像の設定
@@ -51,6 +51,5 @@
             .FormField__input--normal
               = f.text_area :introduction, class: 'text_area', placeholder: "気持ちの良い取引ができればと思います！&#13;&#10;よろしくお願いします！".html_safe
             .actions
-              = f.submit "新規作成", class: 'Button UserButton'
+              = f.submit "情報更新", class: 'Button UserButton'
     = render 'footer'
-

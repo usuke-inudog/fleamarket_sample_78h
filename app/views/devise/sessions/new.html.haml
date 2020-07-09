@@ -1,9 +1,6 @@
 .Wrapper
   .AccountPage
-    .AccountPage__header
-      .AccountPage__logo
-        = link_to root_path do
-          = image_tag '/assets/logo/logo.png', class: 'header__logo'
+    = render "profiles/header"
     .AccountPage__form
       .AccountPage__new
         %p アカウントをお持ちでない方はこちら
@@ -23,19 +20,4 @@
                 = f.password_field :password, autocomplete: "off", placeholder: "パスワード"
             .actions
               = f.submit "ログイン", class: 'Button UserButton'
-    .AccountPage__footer
-      %nav
-        %ul
-          %li
-            =link_to '#', class:'about-furima__privacy-policy' do
-              プライバシーポリシー
-          %li
-            =link_to '#', class:'about-furima__rule' do
-              FURIMA利用規約
-          %li
-            =link_to '#', class:'about-furima__point-rule' do
-              特定商取引に関する表記
-      = link_to root_path do
-        = image_tag '/assets/logo/logo-white.png', class:'footer-logo'
-      .footer__company-logo
-        © FURIMA
+    = render "profiles/footer"

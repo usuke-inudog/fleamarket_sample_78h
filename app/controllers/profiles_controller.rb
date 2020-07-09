@@ -1,15 +1,14 @@
 class ProfilesController < ApplicationController
   def index
   end
-  
+
   def new
-    @profile = Profile.new
-    # @profile = Profile.find(params[:id])
-    # if @profile
-    #     render 'edit'
-    # else
-    #     render 'create'
-    # end
+    if current_user.profile.present?
+      @profile = current_user.profile
+      render "edit"
+    else
+      @profile = Profile.new
+    end
   end
 
   def create
@@ -25,13 +24,20 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @profile = Profile.find(params[:id])
   end
 
   def update
+    @profile = Profile.find(params[:id])
+    if @profile.update(profile_params)
+        redirect_to root_path
+    else
+      render 'edit'
+    end
   end
 
   private
   def profile_params
-    params.require(:profile).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day, :introduction, :avatar).merge(user_id: current_user.id)
+    params.require(:profile).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :birthday, :introduction, :avatar).merge(user_id: current_user.id)
   end
 end
