@@ -65,24 +65,18 @@
 |price|integer|null: false|
 |brand|references|foreign_key: true|
 |category|references|null: false, foreign_key: true|
-|item_condition|references|null: false, foreign_key: true|
-|delivery_burden|references|null: false, foreign_key: true|
-|delivery_method|references|null: false, foreign_key: true|
-|shippers|references|null: false, foreign_key: true|
-|shipping_day|references|null: false, foreign_key: true|
-|size|references|null: false, foreign_key: true|
+|item_condition|string|null: false|
+|delivery_burden|string|null: false|
+|delivery_method|string|null: false|
+|shippers|string|null: false|
+|shipping_day|string|null: false|
+|size|string||
 |seller|references|null: false, foreign_key: {to_table: :users}|
 |buyer|references|foreign_key: {to_table: :users}|
 |deal_closed_date|timestamp||
 ### Association
 - belongs_to :brand
 - belongs_to :category
-- belongs_to :item_condition
-- belongs_to :delivery_burden
-- belongs_to :delivery_method
-- belongs_to :shipper
-- belongs_to :shipping_day
-- belongs_to :size
 - belongs_to :user
 - has_many :item_images
 
@@ -101,7 +95,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
-|ancestry|||
+|ancestry|string|index: true|
 <!-- ancestry使用 -->
 ### Association
 - has_many :items
@@ -114,44 +108,3 @@
 |name|string||
 ### Association
 - has_many :items
-
-
-## Item_conditionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|condition|string||
-### Association
-- has_many :items
-
-
-## Delivery_burdensテーブル
-|Column|Type|Options|
-|------|----|-------|
-|burden|string||
-### Association
-- has_many :items
-
-
-## Delivery_methodsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|method|string||
-### Association
-- has_many :items
-
-
-## Shipping_daysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|shipping_day|string||
-### Association
-- has_many :items
-
-
-## Sizesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|size|string||
-### Association
-- has_many :items
-
