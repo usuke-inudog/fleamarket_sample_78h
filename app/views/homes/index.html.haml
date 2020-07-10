@@ -104,7 +104,7 @@
             .category-item-favorites
               = icon('fas','star')
               1
-          -if item.buyler_id.present? 
+          -if item.buyer_id.present? 
             .category-item-box-sold
               .category-item-box-sold__inner
                 SOLD
@@ -129,7 +129,7 @@
             .brand-item-favorites
               = icon('fas','star')
               2
-            -if item.buyler_id.present? 
+            -if item.buyer_id.present? 
               .brand-item-box-sold
                 .brand-item-box-sold__inner
                   SOLD
