@@ -61,7 +61,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|images|references||null: false|
 |introduction|text|null: false|
 |price|integer|null: false|
 |brand|references|foreign_key: true|
