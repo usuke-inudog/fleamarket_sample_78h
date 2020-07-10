@@ -55,7 +55,7 @@
             必須
         .detail-box__category-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'detail-box__category-input'
+            = f.collection_select :id, Category.all, :id, :name, prompt: "選択して下さい", class: 'detail-box__category-input'
         .detail-box__brand
           %label
             ブランド
@@ -70,7 +70,7 @@
             必須
         .detail-box__condition-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'detail-box__condition-input'
+            = f.select :item_conditon,["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], prompt: "選択して下さい", class: 'detail-box__condition-input'
 
     .sale-box__delivery
       .sale-box__guidance
@@ -83,7 +83,7 @@
             必須
         .delivery-box__burden-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'detail-box__burden-input'
+            = f.select :delivery_burden,["送料込み(出品者負担)","着払い(購入者負担)"], prompt: "選択して下さい", class: 'detail-box__burden-input'
         .delivery-box__method
           %label
             配送方法
@@ -91,7 +91,7 @@
             必須
         .delivery-box__method-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'detail-box__method-input'
+            = f.select :delivery_method,["未定","クロネコヤマト","ゆうパック","ゆうメール"], prompt: "選択して下さい", class: 'detail-box__method-input'
         .delivery-box__shippers
           %label
             発送元の地域
@@ -99,7 +99,7 @@
             必須
         .delivery-box__shippers-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'delivery-box__shippers-input'
+            = f.collection_select :id, Prefecture.all, :id, :name, prompt: "選択して下さい", class: 'delivery-box__shippers-input'
         .delivery-box__shipping-day
           %label
             発送までの日数
@@ -107,7 +107,7 @@
             必須
         .delivery-box__shipping-day-select
           = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :id, prompt: "選択して下さい", class: 'delivery-box__shipping-day-input'
+            = f.select :shipping_days,["1〜2日で発送","2〜3日で発送","4〜7日で発送"], prompt: "選択して下さい", class: 'delivery-box__shipping-day-input'
 
     .sale-box__price
       .sale-box__guidance
