@@ -70,6 +70,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'ancestry'
 gem 'active_hash'
+gem "payjp"
 
 group :production do
   gem 'unicorn'

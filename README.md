@@ -21,9 +21,7 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|birth_year|date|null: false|
-|birth_month|date|null: false|
-|birth_day|date|null: false|
+|birthday|date|null: false|
 |introduction|text||
 |avatar|string||
 |user|references|null: false, foreign_key: true|
@@ -34,7 +32,7 @@
 ## Credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_token|integer|null: false, unique: true|
+|card_id|integer|null: false, unique: true|
 |customer_id|integer|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
