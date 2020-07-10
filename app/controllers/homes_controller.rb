@@ -2,6 +2,8 @@ class HomesController < ApplicationController
   before_action :set_category
   
   def index
+    @item_images = ItemImage.all
+    @items = Item.all
   end
 
   private
