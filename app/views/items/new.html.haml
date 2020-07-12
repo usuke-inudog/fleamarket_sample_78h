@@ -1,6 +1,7 @@
 = render 'homes/header'
 
 .main-new
+= form_with model:@item, local:true do |f|
   .sale-box
     .sale-box__image
       .image-box
@@ -13,16 +14,15 @@
           最大4枚までアップロードできます
         .image-box__container
           %label{for: "img-file"}
-            = form_with model:@item, local:true do |f|
-              = f.fields_for :images do |i|
-                .image-box__input-area
-                  = i.file_field :image, type: 'file', name: "item[images_attributes][][image_url]", value:"", style: "display:none", id:"img-file"
-                  .image-box__input-area--icon
-                    = icon('fas', 'camera fa-2x')
-                  %p
-                    ドラッグアンドドロップ
-                    %br/
-                    またはクリックしてファイルをアップロード
+            = f.fields_for :item_images do |i|
+              .image-box__input-area
+                = i.file_field :image, type: 'file', name: "item[item_images_attributes][#{@item.item_images.count}][image]", value:"", style: "display:none", id:"img-file",data:{index:"0"}
+                .image-box__input-area--icon
+                  = icon('fas', 'camera fa-2x')
+                %p
+                  ドラッグアンドドロップ
+                  %br/
+                  またはクリックしてファイルをアップロード
 
     .sale-box__product
       .product-box
@@ -31,16 +31,14 @@
             商品名
           %span.image-box__title--required
             必須
-        = form_with url: '#', method: :get, local: true do |f|
-          = f.text_field :name, class: 'product-box__title-input', placeholder: "40文字まで"
+        = f.text_field :name, class: 'product-box__title-input', placeholder: "40文字まで"
 
         .product-box__explain
           %label
             商品の説明
           %span.product-box__explain--required
             必須
-        = form_with url: '#', method: :get, local: true do |f|
-          = f.text_area :introduction, class: 'product-box__explain-input', placeholder: "商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。".html_safe
+        = f.text_area :introduction, class: 'product-box__explain-input', placeholder: "商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。".html_safe
         .product-box__explain-input--count
           %span 0/1000
 
@@ -54,23 +52,21 @@
           %span.detail-box__category--required
             必須
         .detail-box__category-select
-          = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Category.all, :id, :name, prompt: "選択して下さい", class: 'detail-box__category-input'
+          = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択して下さい", class: 'detail-box__category-input'
         .detail-box__brand
           %label
             ブランド
           %span.detail-box__brand--arbitrary
             任意
-        = form_with url: '#', method: :get, local: true do |f|
-          = f.text_field :name, class: 'detail-box__brand-input', placeholder: "例）シャネル"
+        = f.fields_for :brand do |b|
+          =b.text_field :name, class: 'detail-box__brand-input', placeholder: "例）シャネル"
         .detail-box__condition
           %label
             商品の状態
           %span.detail-box__condition--required
             必須
         .detail-box__condition-select
-          = form_with url: '#', method: :get, local: true do |f|
-            = f.select :item_conditon,["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], prompt: "選択して下さい", class: 'detail-box__condition-input'
+          = f.select :item_condition,["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], prompt: "選択して下さい", class: 'detail-box__condition-input'
 
     .sale-box__delivery
       .sale-box__guidance
@@ -82,32 +78,28 @@
           %span.delivery-box__burden--required
             必須
         .delivery-box__burden-select
-          = form_with url: '#', method: :get, local: true do |f|
-            = f.select :delivery_burden,["送料込み(出品者負担)","着払い(購入者負担)"], prompt: "選択して下さい", class: 'detail-box__burden-input'
+          = f.select :delivery_burden,["送料込み(出品者負担)","着払い(購入者負担)"], prompt: "選択して下さい", class: 'detail-box__burden-input'
         .delivery-box__method
           %label
             配送方法
           %span.delivery-box__method--required
             必須
         .delivery-box__method-select
-          = form_with url: '#', method: :get, local: true do |f|
-            = f.select :delivery_method,["未定","クロネコヤマト","ゆうパック","ゆうメール"], prompt: "選択して下さい", class: 'detail-box__method-input'
+          = f.select :delivery_method,["未定","クロネコヤマト","ゆうパック","ゆうメール"], prompt: "選択して下さい", class: 'detail-box__method-input'
         .delivery-box__shippers
           %label
             発送元の地域
           %span.delivery-box__shippers--required
             必須
         .delivery-box__shippers-select
-          = form_with url: '#', method: :get, local: true do |f|
-            = f.collection_select :id, Prefecture.all, :id, :name, prompt: "選択して下さい", class: 'delivery-box__shippers-input'
+          = f.collection_select :shipper, Prefecture.all, :name, :name, prompt: "選択して下さい", class: 'delivery-box__shippers-input'
         .delivery-box__shipping-day
           %label
             発送までの日数
           %span.delivery-box__shipping-day--required
             必須
         .delivery-box__shipping-day-select
-          = form_with url: '#', method: :get, local: true do |f|
-            = f.select :shipping_days,["1〜2日で発送","2〜3日で発送","4〜7日で発送"], prompt: "選択して下さい", class: 'delivery-box__shipping-day-input'
+          = f.select :shipping_day,["1〜2日で発送","2〜3日で発送","4〜7日で発送"], prompt: "選択して下さい", class: 'delivery-box__shipping-day-input'
 
     .sale-box__price
       .sale-box__guidance
@@ -121,8 +113,7 @@
           .price-box__form
             %span.price-box__form--yen
               ¥
-            = form_with url: '#', method: :get, local: true do |f|
-              = f.text_field :prace, class: 'price-box__form--input', placeholder: "0"
+            = f.text_field :price, class: 'price-box__form--input', placeholder: "0"
         .price-box__commission
           %label
             販売手数料
@@ -138,10 +129,7 @@
 
     .sale-box__sale
       .sale-box
-        = link_to '#' do
-          .sale-box__sell
-            %p
-              出品する
+        = f.submit "出品する", class:"sale-box__sell"
         = link_to '#' do
           .sale-box__save
             %p
