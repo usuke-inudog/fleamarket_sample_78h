@@ -68,12 +68,12 @@
 |item_condition|string|null: false|
 |delivery_burden|string|null: false|
 |delivery_method|string|null: false|
-|shippers|string|null: false|
+|shipper|string|null: false|
 |shipping_day|string|null: false|
 |size|string||
 |seller|references|null: false, foreign_key: {to_table: :users}|
 |buyer|references|foreign_key: {to_table: :users}|
-|deal_closed_date|timestamp||
+|deal_close_date|timestamp||
 ### Association
 - belongs_to :brand
 - belongs_to :category
