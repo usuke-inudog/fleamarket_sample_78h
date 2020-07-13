@@ -71,6 +71,7 @@ gem 'fog-aws'
 gem 'ancestry'
 gem 'active_hash'
 gem "payjp"
+gem "dotenv-rails"
 
 group :production do
   gem 'unicorn'
