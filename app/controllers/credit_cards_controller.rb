@@ -1,15 +1,64 @@
 class CreditCardsController < ApplicationController
 
   require "payjp"
+  before_action :set_card, only: [:delete, :show]
 
+  # 登録画面表示
   def new
-
+    card = CreditCard.where(user_id: current_user.id).first
+    redirect_to user_path(current_user) if card.present?
   end
 
+  def index
+  end
 
+  # クレジットカード登録
   def create
-
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"] # PAYJPとの通信開始
+    if params["payjp-token"].blank?
+      redirect_to action: "new"
+    else
+      customer = Payjp::Customer.create(
+        description: "登録テスト",
+        # email: current_user.email, 
+        metadata: {user_id: current_user.id},
+        card: params["payjp-token"],
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to user_path(current_user)
+      else
+        redirect_to action: "new"
+      end
+    end
   end
 
+  # クレジットカード削除
+  def delete
+    unless @card.blank?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"] # PAYJPとの通信開始
+      customer.delete
+      @card.delete
+    end
+      redirect_to action: "new"
+  end
+
+  # クレジットカード使用 (PAYJPとの通信)
+  def show
+    @user = User.find(params[:id])
+    if @card.blank?
+      redirect_to action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"] # PAYJPとの通信開始
+      customer = Payjp::Customer.retrieve(@card.customer_id) # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
+      @customer_card = customer.cards.retrieve(@card.card_id) # カスタマー情報からカードの情報を引き出す
+    end
+  end
+
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
 
 end
