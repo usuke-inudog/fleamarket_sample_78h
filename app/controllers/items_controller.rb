@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      # @item.item_images.new
       flash.now[:alert] = '必須項目の内容を確認してください。'
       render :new
     end
