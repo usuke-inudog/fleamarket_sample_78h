@@ -15,7 +15,8 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @item.item_images.new
+      # @item.item_images.new
+      flash.now[:alert] = '必須項目の内容を確認してください。'
       render :new
     end
   end
@@ -29,6 +30,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, [brand_attributes: [:id, :name]], :category_id, :item_condition, :delivery_burden, :delivery_method, :shipper, :shipping_day, :size, [item_images_attributes: [:image, :_destroy, :id]]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :introduction, :price, [brand_attributes: [:id, :name]], :category_id, :item_condition, :delivery_burden, :delivery_method, :shipper, :shipping_day, :size, {item_images_attributes: [:image, :_destroy, :id]}).merge(seller_id: current_user.id)
   end
 end

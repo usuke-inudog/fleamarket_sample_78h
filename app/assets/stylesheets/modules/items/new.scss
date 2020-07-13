@@ -136,12 +136,12 @@
   }
 
   &__container {
-
     label {
       background-color: rgb(245, 245, 245);
       height: 150px;
       width: 100%;
       display: flex;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
       border: 1px dashed rgb(204, 204, 204);
@@ -150,8 +150,6 @@
     }
   }
 }
-
-
 
 .product-box {
   &__title {
@@ -464,4 +462,20 @@
     display: flex;
     justify-content: center;
   }
+}
+
+.item-num-0{
+  width: 100%;
+}
+.item-num-1{
+  width: 491px;
+}
+.item-num-2{
+  width: 363px;
+}
+.item-num-3{
+  width: 234px;
+}
+.item-num-4{
+  width: 106px;
 }
