@@ -9,7 +9,7 @@
             .FormField__label
               = f.label :プロフィール画像の設定
             %p 
-              = image_tag asset_path('/assets/profile_img.png')
+              = image_tag 'profile_img.png'
             .FormField__input
               = f.file_field :avatar, placeholder: "画像"
               = f.hidden_field :image_cache
