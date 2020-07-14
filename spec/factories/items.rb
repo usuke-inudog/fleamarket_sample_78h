@@ -15,7 +15,6 @@ FactoryBot.define do
     seller_id       {FactoryBot.create(:user).id}
     buyer_id        {}
     deal_close_date {}
-
   end
   
 end
