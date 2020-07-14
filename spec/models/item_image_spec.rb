@@ -5,6 +5,7 @@ RSpec.describe ItemImage, type: :model, do: true do
   let(:image) { Rack::Test::UploadedFile.new(image_path) }
 
   describe '#create' do
+
     context '画像を登録できる' do
 
       it "必須項目が全て入力してある際は登録できる" do
@@ -43,5 +44,6 @@ RSpec.describe ItemImage, type: :model, do: true do
       end
 
     end
+
   end
 end
