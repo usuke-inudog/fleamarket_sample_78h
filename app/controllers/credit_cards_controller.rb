@@ -14,17 +14,16 @@ class CreditCardsController < ApplicationController
 
   # クレジットカード登録
   def create
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"] # PAYJPとの通信開始
-    if params["payjp-token"].blank?
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]        # PAYJPとの通信開始
+    if params["payjp-token"].blank?                 # "payjp-token" PAYJPとの通信でトークンが入ったparams
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
         description: "登録テスト",
-        # email: current_user.email, 
         metadata: {user_id: current_user.id},
-        card: params["payjp-token"],
+        card: params["payjp-token"]                # "payjp-token" PAYJPとの通信でトークンが入ったparams
       )
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to user_path(current_user)
       else
@@ -36,7 +35,8 @@ class CreditCardsController < ApplicationController
   # クレジットカード削除
   def delete
     unless @card.blank?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"] # PAYJPとの通信開始
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]      # PAYJPとの通信開始
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       @card.delete
     end
@@ -49,7 +49,7 @@ class CreditCardsController < ApplicationController
     if @card.blank?
       redirect_to action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"] # PAYJPとの通信開始
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]       # PAYJPとの通信開始
       customer = Payjp::Customer.retrieve(@card.customer_id) # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
       @customer_card = customer.cards.retrieve(@card.card_id) # カスタマー情報からカードの情報を引き出す
     end
@@ -58,7 +58,7 @@ class CreditCardsController < ApplicationController
   private
 
   def set_card
-    @card = Card.find_by(user_id: current_user.id)
+    @card = CreditCard.find_by(user_id: current_user.id)
   end
 
 end
