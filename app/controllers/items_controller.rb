@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_category
   before_action :set_item, only:[:show]
   before_action :set_show_instance, only:[:show]
+  before_action :set_sell_instance, only:[:new, :create]
   
   def index
   end
@@ -10,6 +11,14 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.build_brand
     @item.item_images.build
+  end
+
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
   
   def create
@@ -47,5 +56,12 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :introduction, :price, [brand_attributes: [:id, :name]], :category_id, :item_condition, :delivery_burden, :delivery_method, :shipper, :shipping_day, :size, {item_images_attributes: [:image, :_destroy, :id]}).merge(seller_id: current_user.id)
+  end
+
+  def set_sell_instance
+    @category_parent_array = ["選択して下さい"]
+    @parents.each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 end
