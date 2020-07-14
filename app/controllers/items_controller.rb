@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_category
+  before_action :set_item, only:[:show]
+  before_action :set_show_instance, only:[:show]
   
   def index
   end
@@ -26,6 +28,21 @@ class ItemsController < ApplicationController
   private
   def set_category
     @parents = Category.where(ancestry: nil).order("id ASC")
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_show_instance
+    @seller = User.find(@item.seller_id)
+    @images = ItemImage.where(item_id: params[:id])
+    @image_first = ItemImage.where(item_id: params[:id]).first
+    @brand = Brand.find(@item.brand_id)
+    @category_id = @item.category_id
+    @grand_child = Category.find(@category_id)
+    @child  = @grand_child.parent
+    @parent = @child.parent
   end
 
   def item_params

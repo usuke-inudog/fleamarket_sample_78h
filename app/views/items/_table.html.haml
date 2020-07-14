@@ -5,45 +5,47 @@
         %th
           出品者
         %td
-          hoge
+          = @seller.nickname
       %tr
-        %th
+        %th.show-category-box
           カテゴリー
-        %td
+        %td.show-category-box
           = link_to '#' do
-            ベビー・キッズ
+            = @parent.name
           %br/
           = link_to '#' do
-            ベビー服(男女兼用)  ~95cm
+            = @child.name
           %br/
           = link_to '#' do
-            アウター
+            = @grand_child.name
       %tr
         %th
           ブランド
         %td
+          = @brand.name
       %tr
         %th
           商品のサイズ
         %td
+          = @item.size
       %tr
         %th
           商品の状態
         %td
-          未使用に近い
+          = @item.item_condition
       %tr
         %th
           配送料の負担
         %td
-          送料込み（出品者負担）
+          = @item.delivery_burden
       %tr
         %th
           発送元の地域
         %td
           = link_to '#' do
-            岩手県
+            = @item.shipper
       %tr
         %th
           発送日の目安
         %td
-          4-7日で発送
+          = @item.shipping_day

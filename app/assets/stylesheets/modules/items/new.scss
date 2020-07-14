@@ -244,6 +244,30 @@
     border-radius: 4px;
     height: 48px;
     padding: 0 16px;
+    margin-left: 12px;
+    width: 100%;
+  }
+
+  &__size {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    label {
+      @include headline-font
+    }
+
+    &--arbitrary {
+      @include arbitrary
+    }
+  }
+
+  &__size-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 48px;
+    padding: 0 16px;
+    margin-left: 12px;
     width: 100%;
   }
 
