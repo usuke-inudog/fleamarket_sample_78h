@@ -43,6 +43,7 @@
   height: 48px;
   padding: 0 56px 0 16px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 // sale-box__saleの出品する、下書きに保存ボタン文字用
@@ -217,6 +218,9 @@
     &--required {
       @include required
     }
+  }
+  .listing-select-wrapper__box--select{
+    @include select
   }
 
   &__category-select {
