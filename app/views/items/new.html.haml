@@ -53,7 +53,6 @@
               %span.detail-box__category--required
                 必須
             .detail-box__category-select
-              -# ここのcategory_idがjsで書き出したフォームと違うcategory_idに登録しようとしているためエラーが発生している
               = f.select :category_id, @category_parent_array, {}, {class: 'detail-box__category-input', id: 'parent_category'}
           .detail-box__brand
             %label
