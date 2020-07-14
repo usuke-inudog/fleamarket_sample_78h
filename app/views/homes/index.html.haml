@@ -116,7 +116,7 @@
       アーカイバ
     .pickup-brand__container
       - @items.zip(@item_images) do |item, item_image|
-        = link_to '#', class: 'brand-item-box' do
+        = link_to item_path(item.id), class: 'brand-item-box' do
           = image_tag item_image.image.url, class: 'brand-item-box__image'
           .brand-item-box__name
             = item.name
