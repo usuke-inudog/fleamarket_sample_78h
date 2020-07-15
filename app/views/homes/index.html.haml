@@ -90,115 +90,49 @@
     = link_to '#', class:'pickup-categories__link' do
       新規投稿商品
     .pickup-categories__container
-      = link_to '#' do
-        .category-item-box
-          = image_tag "fuku_tatamu.png", class:'category-item-box__image'
+      - @items.zip(@item_images) do |item, item_image|
+        = link_to item_path(item.id), class: 'category-item-box' do
+          = image_tag item_image.image.url, class: 'category-item-box__image'
           .category-item-box__name
-            ee
+            = item.name
           .category-item-box__bottom-box
             .category-item-price
-              1000円
-              %br
-              %span (税込)
-            .category-item-favorites
-              = icon('fas','star')
-              0
-      = link_to '#' do
-        .category-item-box
-          = image_tag "kodomofuku_boy.png", class:'category-item-box__image'
-          .category-item-box__name
-            product3
-          .category-item-box__bottom-box
-            .category-item-price
-              30000円
-              %br
-              %span (税込)
-            .category-item-favorites
-              = icon('fas','star')
-              0
-      = link_to '#' do
-        .category-item-box
-          = image_tag "fashion_sagyougi.png", class:'category-item-box__image'
-          .category-item-box__name
-            product2
-          .category-item-box__bottom-box
-            .category-item-price
-              20000円
-              %br
-              %span (税込)
-            .category-item-favorites
-              = icon('fas','star')
-              0
-      = link_to '#' do
-        .category-item-box
-          = image_tag "publicdomainq-0007543zgo.jpg", class:'category-item-box__image'
-          .category-item-box__name
-            product2
-          .category-item-box__bottom-box
-            .category-item-price
-              20000円
+              = item.price 
+              = "円"
               %br
               %span (税込)
             .category-item-favorites
               = icon('fas','star')
               1
+          -if item.buyer_id.present? 
+            .category-item-box-sold
+              .category-item-box-sold__inner
+                SOLD
+                
   .pickup-brand
     .pickup-brand__headline
       %h2 ピックアップブランド
-    = link_to '#', class:'pickup-brand__link' do
+    = link_to '#', class: 'pickup-brand__link' do
       アーカイバ
     .pickup-brand__container
-      = link_to '#' do
-        .brand-item-box
-          = image_tag "fuku_tatamu.png", class:'brand-item-box__image'
+      - @items.zip(@item_images) do |item, item_image|
+        = link_to item_path(item.id), class: 'brand-item-box' do
+          = image_tag item_image.image.url, class: 'brand-item-box__image'
           .brand-item-box__name
-            ee
+            = item.name
           .brand-item-box__bottom-box
             .brand-item-price
-              1000円
+              = item.price
+              = "円"
               %br
               %span (税込)
             .brand-item-favorites
               = icon('fas','star')
-              0
-      = link_to '#' do
-        .brand-item-box
-          = image_tag "fashion_sagyougi.png", class:'brand-item-box__image'
-          .brand-item-box__name
-            product3
-          .brand-item-box__bottom-box
-            .brand-item-price
-              30000円
-              %br
-              %span (税込)
-            .brand-item-favorites
-              = icon('fas','star')
-              0
-      = link_to '#' do
-        .brand-item-box
-          = image_tag "kodomofuku_boy.png", class:'brand-item-box__image'
-          .brand-item-box__name
-            product2
-          .brand-item-box__bottom-box
-            .brand-item-price
-              20000円
-              %br
-              %span (税込)
-            .brand-item-favorites
-              = icon('fas','star')
-              0
-      = link_to '#' do
-        .brand-item-box
-          = image_tag "publicdomainq-0007543zgo.jpg", class:'brand-item-box__image'
-          .brand-item-box__name
-            product1
-          .brand-item-box__bottom-box
-            .brand-item-price
-              10000円
-              %br
-              %span (税込)
-            .brand-item-favorites
-              = icon('fas','star')
-              1
+              2
+            -if item.buyer_id.present? 
+              .brand-item-box-sold
+                .brand-item-box-sold__inner
+                  SOLD
+                  
 = render 'app-banner'
 = render 'footer'
