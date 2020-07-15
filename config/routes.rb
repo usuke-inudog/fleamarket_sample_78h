@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :categories, only: [:index, :show]
   resources :credit_cards
+  resources :purchase, only: :show
 end

@@ -1,0 +1,49 @@
+.purchase-show__wrapper
+  = render 'profiles/header'
+
+  .body
+    .item-container
+      .headline-box.purchase-box
+        %h2.headline-box__text 購入内容の確認
+      .purchase-item-box.purchase-box
+        = image_tag "pict-reason-03.jpg", class:"purchase-item-box__image"
+        .purchase-item-box__contents
+          .purchase-item-box__contents--name
+            【タイムセール中！】飲みかけのコーヒー
+          .purchase-item-box__contents--price
+            送料込み (税込) 350円
+      .total-place-box.purchase-box
+        .total-place-box--title
+          支払い金額
+        .total-place-box--price
+          ¥350-
+      .payment-box.purchase-box
+        .payment-box--title
+          支払い方法
+          %br
+          %span クレジットカード
+        .payment-box--card
+          ************4242
+          %br
+          有効期限 01/24
+      .shipper-box.purchase-box
+        .shipper-box__contents
+          .shipper-box__contents--title
+            配送先
+          .shipper-box__contents--address
+            〒165-0033
+            %br
+            東京都 中野区 若宮3-19-10
+            %br
+            ATステージ203
+            %br
+            香川 洋輔
+        .shipper-box__edit-btn
+          変更する
+      .info-box.purchase-box
+        郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+      =link_to "", class:"buy-btn-box" do
+        .buy-btn-box--submit
+          購入する
+
+  = render 'profiles/footer'
