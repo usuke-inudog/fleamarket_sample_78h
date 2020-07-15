@@ -3,7 +3,7 @@ class HomesController < ApplicationController
   
   def index
     @item_images = ItemImage.all
-    @items = Item.all
+    @items = Item.all.order("created_at DESC").first(4)
   end
 
   private
