@@ -10,7 +10,6 @@ $(function() {
       exp_month: $("#exp_month").val(),
       exp_year: $("#exp_year").val()
     };
-    console.log(card)
 
     Payjp.createToken(card, function(status, response) {         // 上のカード情報がトークンという暗号化したものとして返ってくる
       form.find("input[type=submit]").prop("disabled", true);
@@ -25,7 +24,6 @@ $(function() {
         alert("登録が完了しました");                                //確認用
       } else {
         alert("カード情報が正しくありません。");
-        console.log(response.error)
         form.prop('disabled', false);
       };
     });

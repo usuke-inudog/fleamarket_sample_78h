@@ -3,7 +3,6 @@
     .credit-page__logo
       = link_to root_path do
         =image_tag "logo.png", size: "185x50"
-  
   .credit-body
     .body-box
       %h2
@@ -28,7 +27,6 @@
             = f.text_field :cvc, name: "cvc", id:"cvc", class:"cvc", type: "text", placeholder: 'カード背面4桁もしくは3桁の番号', class: 'input-default', maxlength: "16"
           .form__upper__group
             = f.submit '登録する', class: 'btn-default', id: "charge-form"
- 
   .credit-footer
     .footer-box
       %nav

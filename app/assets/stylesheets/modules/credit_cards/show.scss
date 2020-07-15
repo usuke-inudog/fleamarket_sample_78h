@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
+.credit-page {
+  background-color: #fff;
+}
+
+.credit-header {
+  background-color: #f8f8f8;
+  padding: 55px;
+  height: 160px;
+  text-align: center;
+}
+
+.credit-body {
+  background-color: #f8f8f8;
+  .body-box {
+    margin: 0 auto;
+    width: 700px;
+    background-color: #fff;
+    h2 {
+      padding: 32px;
+      margin-bottom: 60px;
+      font-size: 22px;
+      text-align: center;
+      display: block;
+      font-size: 1.5em;
+      font-weight: bold;
+      border-bottom:1px solid #f5f5f5;
+    }
+  }
+}
+
+.forms{
+  &__upper{
+    margin: auto;
+    padding-bottom: 70px;
+    max-width: 343px;
+    &__group {
+      font-size: 22px;
+      color: #333;
+      .require {
+        background-color: #3ccace;
+        color: #333;
+        font-size: 22px;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        border: 2px solid grey;
+        vertical-align:top;
+      }
+    }
+    &__group.exp {
+      margin-top: 70px;
+      .equire {
+        background-color: #3ccace;
+        color: #333;
+        font-size: 22px;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        border: 2px solid grey;
+        vertical-align:top;
+      }
+    }
+    &__group.btn {
+      margin-top: 70px;
+      .delete-button {
+        text-align: center;
+      }
+      .register-card-item__submit {
+        background-color: #3ccace;
+        color: #333;
+      }
+    }
+  }
+}
+
+.credit-footer {
+  background-color: #f8f8f8;
+  .footer-box {
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 30px 0px;
+    nav {
+      list-style: none;
+      ul {
+        font-size: 0;
+      }
+      li {
+        display: inline-block;
+        font-size: 13px;
+        margin: 0 0 0 16px;
+      }
+    }
+    .bottom-logo {
+      width: auto;
+      height: 65px;
+      margin: 10px 100px 0 100px;
+      text-align: center;
+    }
+    &__furima-logo {
+      color: #333;
+      text-align: center;
+    }
+  }
+}
