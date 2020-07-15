@@ -43,6 +43,7 @@
   height: 48px;
   padding: 0 56px 0 16px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 // sale-box__saleの出品する、下書きに保存ボタン文字用
@@ -122,7 +123,7 @@
     display: flex;
     align-items: center;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -136,12 +137,14 @@
   }
 
   &__container {
-
-    label {
+    display: flex;
+    flex-wrap: wrap;
+    h2 {
       background-color: rgb(245, 245, 245);
       height: 150px;
-      width: 100%;
+      width: 620px;
       display: flex;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
       border: 1px dashed rgb(204, 204, 204);
@@ -151,15 +154,13 @@
   }
 }
 
-
-
 .product-box {
   &__title {
     display: flex;
     align-items: center;
     margin-bottom: 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -181,7 +182,7 @@
     align-items: center;
     margin: 32px 0 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -212,13 +213,16 @@
     align-items: center;
     margin-bottom: 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
     &--required {
       @include required
     }
+  }
+  .listing-select-wrapper__box--select{
+    @include select
   }
 
   &__category-select {
@@ -232,7 +236,7 @@
     align-items: center;
     margin: 32px 0 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -246,6 +250,30 @@
     border-radius: 4px;
     height: 48px;
     padding: 0 16px;
+    margin-left: 12px;
+    width: 100%;
+  }
+
+  &__size {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--arbitrary {
+      @include arbitrary
+    }
+  }
+
+  &__size-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 48px;
+    padding: 0 16px;
+    margin-left: 12px;
     width: 100%;
   }
 
@@ -254,7 +282,7 @@
     align-items: center;
     margin: 32px 0 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -276,7 +304,7 @@
     align-items: center;
     margin-bottom: 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -296,7 +324,7 @@
     align-items: center;
     margin: 32px 0 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -317,7 +345,7 @@
     align-items: center;
     margin: 32px 0 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -337,7 +365,7 @@
     align-items: center;
     margin: 32px 0 16px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -362,7 +390,7 @@
     padding-bottom: 12px;
     height: 58px;
 
-    label {
+    h2 {
       @include headline-font
     }
 
@@ -463,5 +491,101 @@
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+}
+
+.post__drop__box__container{
+  display: block;
+  margin: 16px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  //プレビュー表示欄のCSS
+  .prev-content {
+    display: flex;
+    .preview-box {
+      height: 162px;
+      width: 140px;
+      margin: 0 15px 10px 0;
+      .upper-box {
+        height: 112px;
+        width: 100%;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .lower-box {
+        display: flex;
+        text-align: center;
+        .update-box {
+          color: #00b0ff;
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+        .delete-box {
+          color: #00b0ff;
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+        .delete-box__sell{
+          color: #00b0ff;
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  //投稿クリックエリアのCSS
+  .label-content{
+    margin-bottom: 10px;
+    width: 620px;
+    .label-box {
+      display: block;
+      border: 1px dashed #ccc;
+      position: relative;
+      background: #f5f5f5;
+      width: 100%;
+      height: 162px;
+      cursor: pointer;
+      &__text-visible {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: bold;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  // file_fieldのcss
+  .hidden-content {
+    .hidden-field {
+      display: none;
+    }
+    .hidden-checkbox {
+      display: none;
+    }
   }
 }
