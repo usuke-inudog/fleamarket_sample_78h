@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   end
   devise_for :users
   resources :profiles, only: [:index, :new, :create, :show, :edit, :update]
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :credit_cards
+  end
   resources :categories, only: [:index, :show]
-  resources :credit_cards
 end
