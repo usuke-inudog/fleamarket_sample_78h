@@ -70,8 +70,15 @@
           %tr
             %td
               .nav-bar-content
-              = link_to new_credit_card_path, method: :get do
-                支払い方法
+              = link_to new_user_credit_card_path(current_user), method: :get do
+                支払い方法(登録)
+              .nav-bar-arrow
+                = icon("fas", "chevron-right")
+          %tr
+            %td
+              .nav-bar-content
+              = link_to user_credit_card_path(current_user), method: :get do
+                支払い方法(削除)
               .nav-bar-arrow
                 = icon("fas", "chevron-right")
           %tr
