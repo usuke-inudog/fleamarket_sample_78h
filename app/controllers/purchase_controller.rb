@@ -1,2 +1,11 @@
 class PurchaseController < ApplicationController
+
+
+
+
+
+
+
+
+
 end
