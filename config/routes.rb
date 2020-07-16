@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:index, :show]
   resources :purchase, only: :show
+  resources :shipping_address, only: [:new, :edit]
 end
