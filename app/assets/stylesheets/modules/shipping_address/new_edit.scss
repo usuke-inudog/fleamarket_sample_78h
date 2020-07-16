@@ -117,7 +117,7 @@
       }
       .phone-number-box{
         &__label{
-          @include required-label
+          @include unrequired-label
         }
         &__form{
           @include shipping-address-form

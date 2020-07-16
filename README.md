@@ -51,7 +51,7 @@
 |city|string|null: false|
 |street|string|null: false|
 |building_number|string||
-|phone_number|string|null: false|
+|phone_number|string||
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
