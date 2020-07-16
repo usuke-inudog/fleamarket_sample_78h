@@ -39,6 +39,18 @@
               不適切な商品の通報
 
   .comment-box
+    .comment-content
+      = form_with model:@comment, local:true do |f|
+        = f.text_area :content, class: 'comment-content__input', placeholder: ""
+      .comment-content__notice
+        %p
+        相手のことを考え丁寧なコメントを心がけましょう。
+        %br/
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = link_to '#', class:'comment-content__btn' do
+        = icon('fas','comment')
+        コメントする
+
   %ul.links
     %li.links__front
       = link_to '#',class:'links__front--icon' do
