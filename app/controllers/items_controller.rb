@@ -35,13 +35,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.seller_id == current_user.id
-      if @item.destroy
-        redirect_to root_path
-      else
-        flash.now[:alert] = '商品の削除に失敗しました'
-      end
+    if @item.seller_id == current_user.id && @item.destroy
+      redirect_to root_path
     else
+      flash.now[:alert] = '商品の削除に失敗しました'
       redirect_to root_path
     end
   end
