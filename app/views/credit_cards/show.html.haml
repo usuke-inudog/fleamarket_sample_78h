@@ -1,0 +1,44 @@
+.credit-page
+  .credit-header
+    .credit-page__logo
+      = link_to root_path do
+        =image_tag "logo.png", size: "185x50"
+  
+  .credit-body
+    .body-box
+      %h2
+        クレジットカード情報削除
+      .forms
+        .forms__upper
+          .forms__upper__group
+            カード番号
+            %span.require
+              = "**** **** **** " + @customer_card.last4
+          .forms__upper__group.exp
+            .name
+              有効期限
+              %span.equire 
+                - exp_month = @customer_card.exp_month.to_s
+                - exp_year = @customer_card.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+          .forms__upper__group.btn
+            = form_tag(user_credit_card_path, method: :delete, id: 'delete-form', class: "delete-button", name: "inputForm") do
+              %input{ type: "hidden", name: "card_id", value: "" }
+              %button.register-card-item__submit 削除する
+  .credit-footer
+    .footer-box
+      %nav
+        %ul
+          %li
+            =link_to '#', class:'about-furima__privacy-policy' do
+              プライバシーポリシー
+          %li
+            =link_to '#', class:'about-furima__rule' do
+              FURIMA利用規約
+          %li
+            =link_to '#', class:'about-furima__point-rule' do
+              特定商取引に関する表記
+      = link_to root_path do
+        = image_tag "logo-white.png", class:'bottom-logo'
+      .footer-box__furima-logo
+        © FURIMA
