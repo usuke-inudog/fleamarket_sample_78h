@@ -156,6 +156,15 @@
     }
   }
 
+  &__delete-btn{
+    margin-right: auto;
+    padding: 6px 10px;
+    border-radius: 40px;
+    color: #fff;
+    background-color: red;
+    border: 1px solid #454545;
+  }
+
   &__unsuitable {
     margin: 10px 0 0;
     display: flex;
