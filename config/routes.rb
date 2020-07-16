@@ -6,6 +6,12 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    resources :purchase, only: [:show] do
+      collection do
+        get "show", to: "purchase#index"
+        post "pay", to: "purchase#pay"
+      end
+    end
   end
   devise_for :users
   resources :profiles, only: [:index, :new, :create, :show, :edit, :update]
