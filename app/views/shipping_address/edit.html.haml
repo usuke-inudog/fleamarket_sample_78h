@@ -21,7 +21,7 @@
           .postal-code-box__label
             %label 郵便番号
             %span 必須
-          = f.number_field "", placeholder: "例）1234567", class:"postal-code-box__form"
+          = f.text_field "", placeholder: "例）1234567", class:"postal-code-box__form"
         .state-province-box.shipping-box-sizing
           .state-province-box__label
             %label 都道府県
