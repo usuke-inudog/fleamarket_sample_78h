@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_category
-  before_action :set_item, only:[:show]
+  before_action :set_item, only:[:show, :edit, :update]
   before_action :set_show_instance, only:[:show]
   before_action :set_sell_instance, only:[:new, :create]
   
@@ -32,6 +32,43 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    # @item = Item.find_by(id:params[:id])
+    if @item.seller_id != current_user.id
+      redirect_to new_item_path
+    end
+
+    # 孫と子のレコードを取得
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    
+    # 下３セットは親、子、孫と配列を作り、親はnameを、子と孫はancestryを格納
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+  end
+
+  def update
+
+    if @item.update(item_params)
+      redirect_to user_path
+    else
+      flash.now[:alert] = '必須項目の内容を確認してください。'
+      render 'edit'
+    end
   end
 
   private
