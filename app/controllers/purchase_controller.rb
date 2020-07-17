@@ -4,7 +4,6 @@ class PurchaseController < ApplicationController
   before_action :secret_key, only: [:show, :pay]
   before_action :set_card, only: [:show, :pay]
   before_action :buyer_user, only: [:show]
-  before_action :set_time, only: [:pay]
 
   require "payjp"
 
@@ -27,7 +26,7 @@ class PurchaseController < ApplicationController
         :customer => @card.customer_id,              # 顧客ID
         :currency => 'jpy',                          # 日本円
       )
-      @item.update(buyer_id: current_user.id, deal_close_date: @time)
+      @item.update(buyer_id: current_user.id, deal_close_date: Time.current)
       redirect_to root_path                          # 購入完了後、トップページに遷移
     end
   end
@@ -61,11 +60,6 @@ class PurchaseController < ApplicationController
   # クレジットカード情報取得
   def set_card
     @card = CreditCard.where(user_id: current_user.id).first
-  end
-
-  # 現在時刻を取得(deal_close_date用)
-  def set_time
-    @time = Time.current
   end
 
 end
