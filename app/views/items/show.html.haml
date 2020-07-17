@@ -1,5 +1,6 @@
 = render 'homes/header'
 = render 'homes/sell-btn'
+
 .main-show
   .item-content
     .item-box
@@ -39,10 +40,9 @@
               不適切な商品の通報
       .purchase-box
         .purchase-inner-box
-          = link_to purchase_path, class: "purchase-btn" do
-            購入画面に進む
-
-
+          - if user_signed_in?
+            = link_to item_purchase_path(@item.id), class: "purchase-btn" do
+              購入画面に進む
   .comment-box
   %ul.links
     %li.links__front
@@ -55,7 +55,6 @@
         %span
         後ろの商品
         = icon('fas','angle-right')
-
   .lists-box
     = link_to '#', class:'see-more' do
       ベビー・キッズをもっと見る
