@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many   :item_images, dependent: :destroy
   belongs_to :seller, class_name:"User", optional: true, foreign_key: "seller_id"
   belongs_to :buyer, class_name:"User", optional: true, foreign_key: "buyer_id"
+  has_many :comments
 
   accepts_nested_attributes_for :brand
   accepts_nested_attributes_for :item_images, allow_destroy: true
