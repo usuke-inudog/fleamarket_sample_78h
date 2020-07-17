@@ -46,12 +46,12 @@
 |shipping_first_name|string|null: false|
 |shipping_family_name_kana|string|null: false|
 |shipping_first_name_kana|string|null: false|
-|postal_code|integer(7)|null: false|
+|postal_code|string(7)|null: false|
 |state_province|string|null: false|
 |city|string|null: false|
 |street|string|null: false|
 |building_number|string||
-|phone_number|string|null: false|
+|phone_number|string||
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user

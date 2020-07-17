@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       collection do
         get "show", to: "purchase#show"
         post "pay", to: "purchase#pay"
+        get "done", to: "purchase#done"
       end
     end
     collection do
@@ -24,25 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show]
+  
+  resources :shipping_address, only: [:new, :edit]
 
 end
-
-
-
-
-
-
-
-
-  # resources :items, only: [:index, :new, :show, :create, :update] do
-  #   collection do
-  #     get 'get_category_children', defaults: { format: 'json' }
-  #     get 'get_category_grandchildren', defaults: { format: 'json' }
-  #   end
-  #   resources :purchase, only: [:show, :pay] do
-  #     collection do
-  #       get "show", to: "purchase#index"
-  #       post "pay", to: "purchase#pay"
-  #     end
-  #   end
-  # end

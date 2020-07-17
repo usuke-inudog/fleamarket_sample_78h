@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_category
-  before_action :set_item, only:[:show]
+  before_action :set_item, only:[:show, :destroy]
   before_action :set_show_instance, only:[:show]
   before_action :set_sell_instance, only:[:new, :create]
   
@@ -32,6 +32,15 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @item.seller_id == current_user.id && @item.destroy
+      redirect_to root_path
+    else
+      flash.now[:alert] = '商品の削除に失敗しました'
+      redirect_to root_path
+    end
   end
 
   private

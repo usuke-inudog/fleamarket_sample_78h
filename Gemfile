@@ -74,6 +74,7 @@ gem 'active_hash'
 gem "payjp"
 gem "dotenv-rails"
 gem "jquery-rails"
+gem "gretel"
 
 group :production do
   gem 'unicorn'

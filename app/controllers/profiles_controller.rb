@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   def new
     if current_user.profile.present?
       @profile = current_user.profile
-      render "edit"
+      redirect_to edit_profile_path(current_user.id)
     else
       @profile = Profile.new
     end
