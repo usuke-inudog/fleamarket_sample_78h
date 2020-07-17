@@ -1,0 +1,20 @@
+.purchase-done__wrapper{
+  background-color: #f5f5f5;
+  width: 100vw;
+  .done-body{
+    height: calc(100vh - 348px);
+    text-align: center;
+    .resutl-box{
+      height: 100%;
+      background-color: #fff;
+      padding: 70px 0;
+      &__text{
+        font-size: 26px;
+        margin-bottom: 70px;
+        span{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
