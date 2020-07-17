@@ -39,7 +39,12 @@ crumb :grandchild do |category|
   link "#{category.name}", category_path(category)
   parent :child
 end
-
+# アイテム
+crumb :item do |item|
+  item = Item.find(params[:id])
+  link "#{item.name}", item_path
+  parent :grandchild
+end
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration
 # files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that
