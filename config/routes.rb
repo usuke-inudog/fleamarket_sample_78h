@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :credit_cards
   end
   resources :categories, only: [:index, :show]
-  resources :purchase, only: :show
+  resources :purchase, only: [:index, :show] do
+    collection do
+      get 'done'
+    end
+  end
   resources :shipping_address, only: [:new, :edit]
 end
