@@ -28,13 +28,14 @@
       = render 'table'
       .item-box__option
         %ul.item-box__option--ul
-          - if @item.seller_id == current_user.id
-            = link_to "出品を取りやめる", item_path(@item.id), method: :delete, class:"item-box__delete-btn"
-          -else
-            %li.item-box__like-btn
-              .item-box__like-btn--icon
-                = icon('fas','star')
-              お気に入り 0
+          - if user_signed_in?
+            - if @item.seller_id == current_user.id
+              = link_to "出品を取りやめる", item_path(@item.id), method: :delete, class:"item-box__delete-btn"
+            -else
+              %li.item-box__like-btn
+                .item-box__like-btn--icon
+                  = icon('fas','star')
+                お気に入り 0
         %ul.item-box__option--ul
           %li.item-box__unsuitable-btn
             = link_to '#', class:'item-box__unsuitable-btn--icon' do
