@@ -28,7 +28,7 @@
       = render 'table'
       .item-box__option
         %ul.item-box__option--ul
-          - if @item.seller_id == current_user.id
+          - if user_signed_in? && @item.seller_id == current_user.id
             = link_to "出品を取りやめる", item_path(@item.id), method: :delete, class:"item-box__delete-btn"
           -else
             %li.item-box__like-btn
