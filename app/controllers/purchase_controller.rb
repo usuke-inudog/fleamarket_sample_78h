@@ -40,16 +40,12 @@ class PurchaseController < ApplicationController
   
   # 出品者を購入不可にする 
   def correct_user
-    if current_user.id == @item.seller_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.seller_id
   end
 
   # SOLDOUT商品は購入不可にする
   def buyer_user
-    if @item.buyer_id.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.buyer_id.present?
   end
 
   # PAYJPとの通信キー取得
