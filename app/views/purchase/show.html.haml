@@ -53,7 +53,7 @@
             %br
             めちゃボロアパート102
             %br
-            香川 洋輔
+            山田 太郎
         .shipper-box__edit-btn
           変更する
           = icon("fas", "chevron-right")
@@ -61,8 +61,9 @@
         郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
       .purchase-alert
         = flash[:no_card]
-      = form_tag(action: :pay, method: :post, class:"buy-btn-box", id:@item.id) do
-        %button.buy-btn-box--submit
-          購入する
+      .buy-btn-box
+        = form_tag(action: :pay, method: :post, id:@item.id) do
+          %button.buy-btn-box--submit
+            購入する
 
   = render 'profiles/footer'

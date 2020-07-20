@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   root 'homes#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  resources :items, only: [:index, :new, :show, :create, :update] do
+  resources :items, only: [:index, :new, :show, :create, :update, :destroy] do
     resources :purchase, only: [:show] do
       collection do
-        # get "show", to: "purchase#show"
         post "pay", to: "purchase#pay"
         get "done", to: "purchase#done"
       end

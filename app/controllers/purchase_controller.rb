@@ -27,7 +27,7 @@ class PurchaseController < ApplicationController
         :currency => 'jpy',                          # 日本円
       )
       @item.update(buyer_id: current_user.id, deal_close_date: Time.current)
-      redirect_to root_path                          # 購入完了後、トップページに遷移
+      redirect_to done_item_purchase_index_path                          # 購入完了後、doneページに遷移
     end
   end
 
