@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function(){
     }
 
     // 投稿編集時
-    //items/:i/editページへリンクした際のアクション
+    //items/:id/editページへリンクした際のアクション
     if (window.location.href.match(/\/items\/\d+\/edit/)){
       //登録済み画像のプレビュー表示欄の要素を取得する
       var prevContent = $('.label-content').prev();
