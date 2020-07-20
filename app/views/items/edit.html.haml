@@ -1,10 +1,8 @@
-= render 'homes/header'
-- breadcrumb :item_new
-= render "layouts/breadcrumbs"
+= render 'profiles/header'
 
 .main-new
   .main-new__form
-    = form_with model:@item, local:true do |f|
+    = form_with model:@item, method: :PATCH, local:true do |f|
       .sale-box
         .sale-box__image
           .image-box
@@ -14,16 +12,27 @@
               %span.image-box__title--required
                 必須
             %p.image-box__explain
-              最大4枚までアップロードできます（合計画像容量1MBまで）
+              最大4枚までアップロードできます
           .post__drop__box__container
             .prev-content
+              - @item.item_images.each do |image|
+                -if image.persisted?
+                  .preview-box
+                    .upper-box
+                      = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                    .lower-box
+                      .delete-box
+                        .delete-btn
+                          %span 削除
             .label-content
-              %label{for: "item_item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+              = f.label :"item_item_images_attributes_#{@image_length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
                 %pre.label-box__text-visible クリックしてファイルをアップロード
             .hidden-content
               = f.fields_for :item_images do |i|
-                = i.file_field :image, class: "hidden-field"
-
+                = i.file_field :image, class: "hidden-field", data: {index: i.index}
+                -if i.object.persisted?
+                  = i.check_box:_destroy, class: "hidden-checkbox"
+ 
         .sale-box__product
           .product-box
             .product-box__title
@@ -53,7 +62,9 @@
                 %span.detail-box__category--required
                   必須
               .detail-box__category-select
-                = f.select :category_id, @category_parent_array, {}, {class: 'detail-box__category-input', id: 'parent_category'}
+                = f.select :category_id, @category_parent_array, {selected:@item.category.parent.parent.name}, {class: 'detail-box__category-input', id: 'parent_category'}
+                = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{},{class: 'category-wrapper__category form-control', id: 'children_wrapper'}
+                = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{},{class: 'category-wrapper__category form-control', id: 'grandchildren_wrapper'}
             .detail-box__brand
               %h2
                 ブランド
@@ -136,7 +147,7 @@
 
         .sale-box__sale
           .sale-box
-            = f.submit "出品する", class:"sale-box__sell"
+            = f.submit "変更する", class:"sale-box__sell"
             = link_to '#' do
               .sale-box__save
                 %p
@@ -150,4 +161,4 @@
           %p
             禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
-= render 'homes/footer'
+= render 'profiles/footer'

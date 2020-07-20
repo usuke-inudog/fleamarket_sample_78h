@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_many :comments
 
   accepts_nested_attributes_for :brand
-  accepts_nested_attributes_for :item_images, allow_destroy: true
+  accepts_nested_attributes_for :item_images, allow_destroy: true, update_only: true
   validates :name,          presence: true, length: { maximum: 40 } 
   validates :introduction,  presence: true, length: { maximum: 1000 }
   validates :category_id,   presence: true
