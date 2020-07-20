@@ -45,10 +45,12 @@
               = icon('fas','flag')
               不適切な商品の通報
       .purchase-box
-        .purchase-inner-box
-          - if user_signed_in?
-            = link_to item_purchase_path(@item.id), class: "purchase-btn" do
-              購入画面に進む
+        - if user_signed_in? && @item.seller_id == current_user.id
+          = link_to edit_item_path(@item.id), class:"item-edit-btn" do
+            商品情報を編集する
+        - else
+          = link_to item_purchase_path(@item.id), class: "purchase-btn" do
+            購入画面に進む
   .comment-box
     .comment-content
       - if current_user
