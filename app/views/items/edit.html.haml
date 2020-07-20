@@ -32,8 +32,6 @@
                 = i.file_field :image, class: "hidden-field", data: {index: i.index}
                 -if i.object.persisted?
                   = i.check_box:_destroy, class: "hidden-checkbox"
-              -# - @item.item_images.length.upto(3) do |i|
-              -#   %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
  
         .sale-box__product
           .product-box
