@@ -31,7 +31,7 @@
       = render 'table'
       .item-box__option
         %ul.item-box__option--ul
-          - if user_signed_in? && @item.seller_id == current_user.id
+          - if user_signed_in? && @item.seller_id == current_user.id && @item.buyer_id.blank?
             = link_to "出品を取りやめる", item_path(@item.id), method: :delete, class:"item-box__delete-btn"
           - else
             %ul.item-box__option--ul
@@ -45,7 +45,7 @@
               = icon('fas','flag')
               不適切な商品の通報
       .purchase-box
-        - if user_signed_in? && @item.seller_id == current_user.id
+        - if user_signed_in? && @item.seller_id == current_user.id && @item.buyer_id.blank?
           = link_to edit_item_path(@item.id), class:"item-edit-btn" do
             商品情報を編集する
         - elsif user_signed_in?
