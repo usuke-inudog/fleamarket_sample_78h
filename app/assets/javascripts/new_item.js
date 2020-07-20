@@ -22,9 +22,10 @@ $(document).on('turbolinks:load', function(){
     }
 
     $(document).on('change', '.hidden-field', function() {
+      console.log(1)
       setLabel();
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+      $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
       var file = this.files[0];
       var reader = new FileReader();
       reader.readAsDataURL(file);
@@ -44,7 +45,7 @@ $(document).on('turbolinks:load', function(){
 
         setLabel();
         if(count < 4){
-          $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_image`});
+          $('.label-box').attr({id: `label-box--${count}`,for: `item_item_images_attributes_${count}_image`});
         }
       }
     });

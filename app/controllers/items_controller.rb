@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_category
   before_action :set_item, only:[:show, :edit, :update]
   before_action :set_show_instance, only:[:show]
-  before_action :set_sell_instance, only:[:new, :create]
+  before_action :set_sell_instance, only:[:new, :create, :edit, :update]
   
   def index
   end
@@ -10,7 +10,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.build_brand
-    @item.item_images.build
+    4.times do
+      @item.item_images.build
+    end
   end
 
   def get_category_children
@@ -22,6 +24,7 @@ class ItemsController < ApplicationController
   end
   
   def create
+    # binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -35,7 +38,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @item = Item.find_by(id:params[:id])
+    @item = Item.find(params[:id])
+    @image_length = @item.item_images.length
+    (4 - @item.item_images.length).times do
+    @item.item_images.build
+    end
     if @item.seller_id != current_user.id
       redirect_to new_item_path
     end
@@ -44,7 +51,7 @@ class ItemsController < ApplicationController
     grandchild_category = @item.category
     child_category = grandchild_category.parent
     
-    # 下３セットは親、子、孫と配列を作り、親はnameを、子と孫はancestryを格納
+    # # 下３セットは親、子、孫と配列を作り、親はnameを、子と孫はancestryを格納
     @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -62,9 +69,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-
-    if @item.update(item_params)
-      redirect_to user_path
+    @item = Item.find(params[:id])
+    if @item.update!(item_params)
+      redirect_to user_path(current_user)
     else
       flash.now[:alert] = '必須項目の内容を確認してください。'
       render 'edit'
@@ -92,7 +99,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, [brand_attributes: [:id, :name]], :category_id, :item_condition, :delivery_burden, :delivery_method, :shipper, :shipping_day, :size, {item_images_attributes: [:image, :_destroy, :id]}).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :introduction, :price, [brand_attributes: [:id, :name]], :category_id, :item_condition, :delivery_burden, :delivery_method, :shipper, :shipping_day, :size, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_sell_instance

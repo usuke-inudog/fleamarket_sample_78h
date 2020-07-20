@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name:"User", optional: true, foreign_key: "buyer_id"
 
   accepts_nested_attributes_for :brand
-  accepts_nested_attributes_for :item_images, allow_destroy: true
+  accepts_nested_attributes_for :item_images, allow_destroy: true, update_only: true
   validates :name,          presence: true, length: { maximum: 40 } 
   validates :introduction,  presence: true, length: { maximum: 1000 }
   validates :category_id,   presence: true
