@@ -37,14 +37,13 @@ document.addEventListener("turbolinks:load", function() {
       var parentCategory = document.getElementById('parent_category').value;
       if (parentCategory != "選択して下さい"){
         $.ajax({
-          url: 'get_category_children',
+          url: '/items/get_category_children',
           type: "GET",
           data: { parent_name: parentCategory },
           dataType: 'json'
         })
         .done(function(children){
           $('#children_wrapper').remove();
-
           $('#grandchildren_wrapper').remove();
           var insertHTML = '';
           children.forEach(function(child){
@@ -60,13 +59,12 @@ document.addEventListener("turbolinks:load", function() {
         $('#grandchildren_wrapper').remove();
       }
     });
-
+  
     $('.listing-product-detail__category').on('change', '#child_category', function(){
       var childId = $('#child_category option:selected').data('category');
-      // ここまではOK
       if (childId != "選択して下さい"){
         $.ajax({
-          url: 'get_category_grandchildren',
+          url: '/items/get_category_grandchildren',
           type: 'GET',
           data: { child_id: childId },
           dataType: 'json'
