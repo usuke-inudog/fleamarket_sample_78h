@@ -22,9 +22,10 @@
                 - exp_year = @customer_card.exp_year.to_s.slice(2,3)
                 = exp_month + " / " + exp_year
           .forms__upper__group.btn
-            = form_tag(user_credit_card_path, method: :delete, id: 'delete-form', class: "delete-button", name: "inputForm") do
-              %input{ type: "hidden", name: "card_id", value: "" }
-              %button.register-card-item__submit 削除する
+            .delete-button
+              = form_tag(user_credit_card_path, method: :delete, id: 'delete-form', name: "inputForm") do
+                %input{ type: "hidden", name: "card_id", value: "" }
+                %button.register-card-item__submit 削除する
   .credit-footer
     .footer-box
       %nav
