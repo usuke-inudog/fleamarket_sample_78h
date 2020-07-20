@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :show, :create, :update] do
     resources :purchase, only: [:show] do
       collection do
-        # get "show", to: "purchase#show"
         post "pay", to: "purchase#pay"
         get "done", to: "purchase#done"
       end
