@@ -2,9 +2,11 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
     if comment.save
-      redirect_to "/items/#{comment.item.id}", notice: "コメントを投稿しました"
+      redirect_to item_path(comment.item.id),
+      notice: "コメントを投稿しました"
     else
-      redirect_to "/items/#{comment.item.id}", alert: "コメントを入力してください"
+      redirect_to item_path(comment.item.id),
+      alert: "コメントを入力してください"
     end
   end
 
