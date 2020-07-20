@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_category
-  before_action :set_item, only:[:show, :edit, :update]
+  before_action :set_item, only:[:show, :edit, :update, :destroy]
   before_action :set_show_instance, only:[:show]
   before_action :set_sell_instance, only:[:new, :create, :edit, :update]
   
@@ -35,6 +35,17 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+  end
+
+  def destroy
+    if @item.seller_id == current_user.id && @item.destroy
+      redirect_to root_path
+    else
+      flash.now[:alert] = '商品の削除に失敗しました'
+      redirect_to root_path
+    end
   end
 
   def edit

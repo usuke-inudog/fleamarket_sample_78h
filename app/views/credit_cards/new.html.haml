@@ -7,7 +7,7 @@
     .body-box
       %h2
         クレジットカード情報登録
-      = form_with url:credit_cards_path, method: :post, html: { name: "inputForm" },class:"form" do |f|
+      = form_with url: user_credit_cards_path, method: :post, html: { name: "inputForm" }, class: "form" do |f|
         .form__upper
           .form__upper__group
             = f.label :カード番号
@@ -26,7 +26,7 @@
             %span.form-require 必須
             = f.text_field :cvc, name: "cvc", id:"cvc", class:"cvc", type: "text", placeholder: 'カード背面4桁もしくは3桁の番号', class: 'input-default', maxlength: "16"
           .form__upper__group
-            = f.submit '次へ進む', class: 'btn-default', id: "charge-form"
+            = f.submit '登録する', class: 'btn-default', id: "charge-form"
   .credit-footer
     .footer-box
       %nav

@@ -1,7 +1,6 @@
 # Fleamarket DB設計
 
-
-## Usersテーブル
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false, unique: true|
@@ -12,9 +11,9 @@
 - has_one :credit_card
 - has_many :items
 - has_one :shipping_address
+- has_many :comments
 
-
-## Profilesテーブル
+## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name|string|null: false|
@@ -28,8 +27,7 @@
 ### Association
 - belongs_to :user
 
-
-## Credit_cardsテーブル
+## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |card_id|integer|null: false, unique: true|
@@ -38,26 +36,24 @@
 ### Association
 - belongs_to :user
 
-
-## Shipping_addressesテーブル
+## shipping_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |shipping_family_name|string|null: false|
 |shipping_first_name|string|null: false|
 |shipping_family_name_kana|string|null: false|
 |shipping_first_name_kana|string|null: false|
-|postal_code|integer(7)|null: false|
+|postal_code|string(7)|null: false|
 |state_province|string|null: false|
 |city|string|null: false|
 |street|string|null: false|
 |building_number|string||
-|phone_number|string|null: false|
+|phone_number|string||
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
-
-## Itemsテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -79,9 +75,9 @@
 - belongs_to :category
 - belongs_to :user
 - has_many :item_images
+- has_many :comments
 
-
-## Item_imagesテーブル
+## item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
@@ -89,9 +85,7 @@
 #### Association
 - belongs_to :item
 
-
-
-## Categoriesテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
@@ -101,10 +95,19 @@
 - has_many :items
 - has_ancestry
 
-
-## Brandsテーブル
+## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
 ### Association
 - has_many :items
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|content|text|null: false|
+|item|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+### Association
+- belongs_to :item
+- belongs_to :user

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_173134) do
+ActiveRecord::Schema.define(version: 2020_07_17_060917) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -26,9 +26,19 @@ ActiveRecord::Schema.define(version: 2020_07_11_173134) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "card_id", null: false
-    t.integer "customer_id", null: false
+    t.string "card_id", null: false
+    t.string "customer_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -85,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_173134) do
     t.string "shipping_first_name", null: false
     t.string "shipping_family_name_kana", null: false
     t.string "shipping_first_name_kana", null: false
-    t.integer "postal_code", null: false
+    t.string "postal_code", null: false
     t.string "state_province", null: false
     t.string "city", null: false
     t.string "street", null: false
@@ -111,6 +121,8 @@ ActiveRecord::Schema.define(version: 2020_07_11_173134) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"

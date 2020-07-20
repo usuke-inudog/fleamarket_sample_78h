@@ -1,0 +1,11 @@
+.purchase-done__wrapper
+  = render 'profiles/header'
+  .done-body
+    .resutl-box
+      .resutl-box__text
+        ご購入ありがとうございました
+        %br
+        %span またのご利用をお待ちしております
+      =link_to root_path, class:"resutl-box__top-page-btn" do
+        トップページへ
+  = render 'profiles/footer'

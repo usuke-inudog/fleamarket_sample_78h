@@ -1,5 +1,8 @@
 = render 'homes/header'
 = render 'homes/sell-btn'
+- breadcrumb :category
+= render "layouts/breadcrumbs"
+
 .category-body
   .category-contaner
     .category-parents
@@ -9,7 +12,7 @@
             = parent.name
     .category-links
       - @parents.each do |parent|
-        = link_to "#" do
+        = link_to category_path(parent.id) do
           .category-links__parent{id: "#{parent.id}"}
             = parent.name
         - parent.children.each do |child|
@@ -17,7 +20,7 @@
             = child.name
           .contents
             - child.children.each do |grandchild|
-              = link_to "#", class:'contents__grand-child' do
+              = link_to category_path(grandchild.id), class:'contents__grand-child' do
                 = grandchild.name
         = link_to "", class:'top-btn' do
           .top-btn__text
