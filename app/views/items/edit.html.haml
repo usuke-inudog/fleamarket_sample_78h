@@ -25,7 +25,7 @@
                         .delete-btn
                           %span 削除
             .label-content
-              = f.label :"item_images_attributes_#{@image_length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
+              = f.label :"item_item_images_attributes_#{@image_length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
                 %pre.label-box__text-visible クリックしてファイルをアップロード
             .hidden-content
               = f.fields_for :item_images do |i|

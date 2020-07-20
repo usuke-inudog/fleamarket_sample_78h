@@ -580,12 +580,12 @@
   }
 
   // file_fieldのcss
-  // .hidden-content {
-  //   .hidden-field {
-  //     display: none;
-  //   }
-  //   .hidden-checkbox {
-  //     display: none;
-  //   }
-  // }
+  .hidden-content {
+    .hidden-field {
+      display: none;
+    }
+    .hidden-checkbox {
+      display: none;
+    }
+  }
 }
