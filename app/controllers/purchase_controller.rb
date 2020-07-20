@@ -50,7 +50,7 @@ class PurchaseController < ApplicationController
 
   # PAYJPとの通信キー取得
   def secret_key
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
   end
 
   # クレジットカード情報取得

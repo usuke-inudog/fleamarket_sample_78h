@@ -48,9 +48,12 @@
         - if user_signed_in? && @item.seller_id == current_user.id
           = link_to edit_item_path(@item.id), class:"item-edit-btn" do
             商品情報を編集する
-        - else
+        - elsif user_signed_in?
           = link_to item_purchase_path(@item.id), class: "purchase-btn" do
             購入画面に進む
+        - else
+          %strong
+            %p ※※※ 購入するにはログインが必要です ※※※
   .comment-box
     .comment-content
       - if current_user
@@ -64,7 +67,6 @@
           = button_tag type: 'submit', class: 'comment-content__btn' do
             = icon('fas','comment')
             コメントする
-          
       - else
         %strong
           %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※

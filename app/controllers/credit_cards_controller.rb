@@ -14,7 +14,7 @@ class CreditCardsController < ApplicationController
 
   # クレジットカード登録
   def create
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]        # PAYJPとの通信開始
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)        # PAYJPとの通信開始
     if params["payjp-token"].blank?                 # "payjp-token" PAYJPとの通信でトークンが入ったparams
       redirect_to action: "new"
     else
@@ -38,7 +38,7 @@ class CreditCardsController < ApplicationController
     if @card.blank?
       redirect_to action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]                 # PAYJPとの通信開始
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)                 # PAYJPとの通信開始
       customer = Payjp::Customer.retrieve(@card.customer_id)   # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
       @customer_card = customer.cards.retrieve(@card.card_id)  # カスタマー情報からカードの情報を引き出す
     end
