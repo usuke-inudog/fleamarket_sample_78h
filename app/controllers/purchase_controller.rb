@@ -4,6 +4,7 @@ class PurchaseController < ApplicationController
   before_action :secret_key, only: [:show, :pay]
   before_action :set_card, only: [:show, :pay]
   before_action :buyer_user, only: [:show]
+  before_action :set_address, only: [:show, :pay]
 
   require "payjp"
 
@@ -20,6 +21,9 @@ class PurchaseController < ApplicationController
     if @card.blank?
       flash[:no_card] = "カードを登録してください"
       redirect_to new_user_credit_card_path(current_user.id)       # render "show" セカンドオプション
+    elsif @address.blank?
+      flash[:error] = "配送先住所を登録してください"
+      redirect_to new_shipping_address_path
     else
       Payjp::Charge.create(
         :amount => @item.price,                      # 支払金額を入力
@@ -58,4 +62,8 @@ class PurchaseController < ApplicationController
     @card = CreditCard.where(user_id: current_user.id).first
   end
 
+  def set_address
+    @address = ShippingAddress.where(user_id: current_user.id).first
+    # @address = ShippingAddress.find(user_id: current_user.id)
+  end
 end
