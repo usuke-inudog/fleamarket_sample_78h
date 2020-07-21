@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   
   resources :profiles, only: [:index, :new, :create, :show, :edit, :update]
   
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update] do
     resources :credit_cards
   end
 
