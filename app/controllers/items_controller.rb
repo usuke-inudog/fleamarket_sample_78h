@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to item_path(@item.id), notice: "商品を出品しました"
     else
       redirect_to new_item_path, flash: { error: @item.errors.full_messages }
     end
@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to user_path(current_user)
+      redirect_to item_path(@item.id), notice: "商品情報を変更しました"
     else
       redirect_to edit_item_path(@item.id), flash: { error: @item.errors.full_messages } 
     end
