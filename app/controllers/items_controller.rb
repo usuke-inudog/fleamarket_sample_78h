@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.seller_id == current_user.id && @item.destroy
-      redirect_to root_path
+      redirect_to root_path, notice: "商品を削除しました"
     else
       flash.now[:alert] = '商品の削除に失敗しました'
       redirect_to root_path
