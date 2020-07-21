@@ -47,6 +47,7 @@
         - if @address.blank?
           = link_to new_shipping_address_path, class:"shipper-box__contents--info" do
             配送先を登録してください
+            = icon("fas", "chevron-right")
         - else
           .shipper-box__contents--title
             配送先
