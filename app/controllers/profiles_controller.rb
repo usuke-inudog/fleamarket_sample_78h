@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   def new
     if current_user.profile.present?
       @profile = current_user.profile
-      redirect_to edit_profile_path(current_user.id)
+      redirect_to edit_profile_path(@profile.id)
     else
       @profile = Profile.new
     end
@@ -14,10 +14,11 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    if @profile.save!
-        redirect_to root_path
+    if @profile.save
+      redirect_to user_path(current_user.id)
     else
-        render 'new'
+      flash.now[:alert] = '氏名、かな、生年月日は全て入力してください'
+      render 'new'
     end
   end
 
@@ -29,8 +30,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-        redirect_to root_path
+        redirect_to user_path(current_user.id)
     else
+      flash.now[:alert] = '氏名、かな、生年月日は全て入力してください'
       render 'edit'
     end
   end
