@@ -10,13 +10,13 @@
     .AccountPage__form
       .AccountPage__new
         %h3 アカウント編集
-      = form_with local: true do |f|
+      = form_for(current_user) do |f|
         .FormField
           .FormField__content
             .FormField__label--normal
               = f.label :ニックネーム
             .FormField__input--normal
-              = f.text_field :name, autofocus: true, placeholder: "新しいニックネームを入力"
+              = f.text_field :nickname, autofocus: true, placeholder: "新しいニックネームを入力"
             .FormField
               .FormField__label--normal
                 = f.label :メールアドレス
