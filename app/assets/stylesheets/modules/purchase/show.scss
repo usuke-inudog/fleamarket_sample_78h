@@ -103,6 +103,12 @@
         &__contents{
           display: flex;
           flex-direction: column;
+          &--info{
+            text-align: center;
+            margin-right: 50px;
+            padding: 10px;
+            font-weight: bold;
+          }
           &--address{
             max-width: 180px;
             font-size: 12px;
