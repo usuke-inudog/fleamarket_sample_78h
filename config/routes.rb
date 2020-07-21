@@ -25,6 +25,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   
-  resources :shipping_address, only: [:new, :edit]
+  resources :shipping_addresses, only: [:new, :edit, :create, :update]
 
 end
