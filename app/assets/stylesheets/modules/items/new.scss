@@ -460,6 +460,7 @@
     border: 1px solid transparent;
     font-weight: 600;
     position: relative;
+    cursor: pointer;
 
     p {
       @include center
