@@ -28,8 +28,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      flash.now[:alert] = '必須項目の内容を確認してください。'
-      render :new
+      redirect_to new_item_path, flash: { error: @item.errors.full_messages }
     end
   end
 
@@ -80,11 +79,10 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.update!(item_params)
+    if @item.update(item_params)
       redirect_to user_path(current_user)
     else
-      flash.now[:alert] = '必須項目の内容を確認してください。'
-      render 'edit'
+      redirect_to edit_item_path(@item.id), flash: { error: @item.errors.full_messages } 
     end
   end
 
