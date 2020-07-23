@@ -1,0 +1,31 @@
+// apple-banner,google-banner,font-shadowはbodyと共通
+.bottom-image{
+  height: 360px;
+  background: image-url("bg-appBanner-pict.jpg")center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  &__headline{
+    h2{
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: $font-shadow;
+    }
+  }
+  &__text{
+    font-size: 35px;
+    text-shadow: $font-shadow;
+  }
+  .bottom-icons{
+    display: flex;
+    align-items: center;
+    &__apple{
+      @include apple-banner
+    }
+    &__google{
+      @include google-banner
+    }
+  }
+}

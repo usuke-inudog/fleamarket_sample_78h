@@ -1,0 +1,28 @@
+.header
+  .header-inner
+    .header-main
+      = link_to root_path do
+        = image_tag "logo.png", class: 'header-main__logo'
+      .header-main__search-box
+        = form_with url: '#', method: :get, local: true do |f|
+          = f.text_field :keyword, class:'header-main__search-box--input', placeholder:"キーワードから探す"
+          = image_tag "icon-search 1.png", class:'header-main__search-box--submit'
+      .header-main__submit-btn
+    .header-navigation
+      .search-list
+        = render 'homes/category-tree'
+        = link_to '#', class:"search-list__brand" do
+          ブランド
+      -if user_signed_in? 
+        %ul.login-box
+          = link_to user_path(current_user.id) do
+            %li.login-box__edit
+              マイページ
+      -else
+        %ul.login-box
+          = link_to new_user_session_path do
+            %li.login-box__login
+              ログイン
+          = link_to new_user_registration_path do
+            %li.login-box__registration
+              新規会員登録

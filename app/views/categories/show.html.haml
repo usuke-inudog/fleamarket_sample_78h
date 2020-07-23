@@ -1,0 +1,11 @@
+= render 'homes/header'
+= render 'homes/sell-btn'
+- if @category.root?
+  - breadcrumb :parent
+- elsif @category.has_children?
+  - breadcrumb :child
+- else
+  - breadcrumb :grandchild
+= render "layouts/breadcrumbs"
+= render 'homes/app-banner'
+= render 'homes/footer'

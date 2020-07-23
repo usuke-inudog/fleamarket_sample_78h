@@ -1,0 +1,55 @@
+.Wrapper
+  .ProfilePage
+    = render 'header'
+    .ProfilePage__main
+      .ProfilePage__new
+        %h4 プロフィール作成
+        = form_with model: @profile, local: true do |f|
+          .FormField
+            .FormField__label
+              = f.label :プロフィール画像の設定
+            %p 
+              = image_tag 'profile_img.png'
+            .FormField__input
+              = f.file_field :avatar, placeholder: "画像"
+              = f.hidden_field :image_cache
+            %p プロフィール画像に設定したい画像を選択してください
+          .FormField
+            .FormField__label
+              = f.label :名字
+              %span (全角)
+            .FormField__input
+              = f.text_field :family_name, placeholder: "姓"
+          .FormField
+            .FormField__label
+              = f.label :名前
+              %span (全角)
+            .FormField__input
+              = f.text_field :first_name, placeholder: "名"
+          .FormField
+            .FormField__label
+              = f.label :名字かな
+              %span (全角ひらがな)
+            .FormField__input
+              = f.text_field :family_name_kana, placeholder: "せい"
+          .FormField
+            .FormField__label
+              = f.label :名前かな
+              %span (全角ひらがな)
+            .FormField__input
+              = f.text_field :first_name_kana, placeholder: "めい"
+          .FormField
+            .FormField__label
+              = f.label :生年月日
+              %span （一度登録すると変更できません）
+            .FormField__input--birthday
+              = f.date_select :birthday, prompt:"--", use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
+          .FormField
+            .FormField__label
+              = f.label :コメント
+              %span （1000文字まで）
+            .FormField__input
+              = f.text_area :introduction, class: 'text_area', placeholder: "気持ちの良い取引ができればと思います！&#13;&#10;よろしくお願いします！".html_safe
+            .actions
+              = f.submit "新規作成", class: 'Button UserButton'
+    = render 'footer'

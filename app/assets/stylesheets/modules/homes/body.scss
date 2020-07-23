@@ -1,0 +1,453 @@
+*{
+  box-sizing: border-box;
+}
+// 選ばれる理由画像左上の番号用
+@mixin reason-num{
+  height: 55px;
+  width: 55px;
+  background-color: #3CCACE;
+  font-size: 30px;
+  color: #fff;
+  border-radius: 4%;
+  text-align: center;
+  padding-top: 5px;
+}
+// 選ばれる理由見出し用
+@mixin reason-headline{
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 50px;
+  text-align: center;
+  span{
+    color: #3CCACE;
+  }
+}
+// 選ばれる理由テキスト用
+@mixin reason-text{
+  font-size: 18px;
+  margin-top: 16px;
+}
+// appleのバナー用
+@mixin apple-banner{
+  width: auto;
+  height: 55px;
+}
+// Googleのバナー用
+@mixin google-banner{
+  width: auto;
+  height: 80px;
+}
+// 見出し下の緑の下線用
+@mixin after-underline{
+  content: "";
+  width: 70px;
+  height: 4px;
+  background-color: #3CCACE;
+  transform: translateX(-50%);
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+}
+// 特徴見出し用
+@mixin feature-h3{
+  font-weight: bold;
+  font-size: 19px;
+}
+// 特徴テキスト用
+@mixin feature-text{
+  margin-bottom: 40px;
+  font-weight: 200;
+  font-size: 17px;
+}
+// 特徴画像用
+@mixin feature-image{
+  width: 70%;
+  height: auto;
+}
+// フォントを黒時の16pxへ変更用
+@mixin font-black16{
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+}
+// 見出しの影出し用
+$font-shadow: 0 0 5px rgba(0,0,0,0.4);
+
+// 売り切れ商品用
+@mixin item-sold {
+  width: 0;
+  height: 0;
+  border-top: 45px solid #ea352d ;
+  border-right: 45px solid transparent;
+  border-bottom: 45px solid transparent;
+  border-left: 45px solid #ea352d ;
+  z-index:1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  &__inner{
+    transform: rotate(-45deg);
+    font-size: 20px;
+    margin:-20px 0px 0px -40px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+}
+
+.toppage-body{
+  .main-image{
+    background-image: image-url("bg-mainVisual-pict_pc.jpg");
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 60px;
+    color: #fff;
+    &__text-box{
+      h2{
+        font-size: 60px;
+        text-shadow: $font-shadow;
+      }
+      &__text{
+        font-size: 18px;
+        text-shadow: $font-shadow;
+        margin-top: 16px;
+      }
+    }
+    .main-icons{
+      display: flex;
+      align-items: center;
+      &__apple{
+        @include apple-banner
+      }
+      &__google{
+        @include google-banner
+      }
+    }
+  }
+  .reason-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    .reason-headlines{
+      &__text{
+        text-align: center;
+        line-height: 1.4;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        position: relative;
+        &::after{
+          @include after-underline
+        }
+        h2{
+          font-weight: bold;
+          font-size: 26px;
+        }
+      }
+    }
+    .reasons-container{
+      display: flex;
+      justify-content: center;
+      .first-reason{
+        width: 30%;
+        margin: 16px 5% 0 0;
+        &__image{
+          height: 300px;
+          background: image-url("pict-reason-01.jpg")center/cover no-repeat;
+          .reason-number__first{
+            @include reason-num
+          }
+        }
+        &__headline{
+          @include reason-headline
+        }
+        &__text{
+          @include reason-text
+        }
+      }
+      .second-reason{
+        width: 30%;
+        margin: 16px 5% 0 0;
+        &__image{
+          height: 300px;
+          background: image-url("pict-reason-02.jpg")center/cover no-repeat;
+          .reason-number__second{
+            @include reason-num
+          }
+        }
+        &__headline{
+          @include reason-headline
+        }
+        &__text{
+          @include reason-text
+        }
+      }
+      .third-reason{
+        width: 30%;
+        margin-top: 16px;
+        &__image{
+          height: 300px;
+          background: image-url("pict-reason-03.jpg")center/cover no-repeat;
+          .reason-number__third{
+            @include reason-num
+          }
+        }
+        &__headline{
+          @include reason-headline
+        }
+        &__text{
+          @include reason-text
+        }
+      }
+    }
+  }
+  .sub-image{
+    height: 400px;
+    background: image-url("bg-topMiddleDl-pict.jpg")center bottom/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+    color: #fff;
+    h2{
+      text-shadow: $font-shadow;
+      font-size: 27px;
+      font-weight: bold;
+    }
+    &__text{
+      font-size: 18px;
+      margin: 20px 0 30px;
+      text-shadow: $font-shadow;
+    }
+    .sub-iconbox{
+      display: flex;
+      align-items: center;
+      &__apple{
+        @include apple-banner
+      }
+      &__google{
+        @include google-banner
+      }
+    }
+  }
+  .feature-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    .feature-headline{
+      &__text{
+        text-align: center;
+        line-height: 1.4;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        position: relative;
+        h2{
+          font-weight: bold;
+          font-size: 26px;
+        }
+        &::after{
+          @include after-underline
+        }
+      }
+    }
+    .future-container{
+      display: flex;
+      justify-content: center;
+      padding: 60px 60px;
+      .first-feature{
+        width: 30%;
+        &__image{
+          @include feature-image
+        }
+        &__headline{
+          text-align: center;
+          margin: 40px 0 10px;
+          h3{
+            @include feature-h3
+          }
+        }
+        &__text{
+          @include feature-text
+        }
+      }
+      .second-feature{
+        width: 30%;
+        margin: 0 20px;
+        &__image{
+          @include feature-image
+        }
+        &__headline{
+          text-align: center;
+          margin: 40px 0 10px;
+          h3{
+            @include feature-h3
+          }
+        }
+        &__text{
+          @include feature-text
+        }
+      }
+      .third-feature{
+        width: 30%;
+        &__image{
+          @include feature-image
+        }
+        &__headline{
+          text-align: center;
+          margin: 40px 0 10px;
+          h3{
+            @include feature-h3
+          }
+        }
+        &__text{
+          @include feature-text
+        }
+      }
+    }
+  }
+  .pickup-categories{
+    padding: 80px 40px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__headline{
+      h2{
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+      }
+    }
+    &__link{
+      text-align: center;
+      font-size: 24px;
+      text-decoration: none;
+      color: #3CCACE;
+      margin-bottom: 20px;
+    }
+    &__container{
+      display: flex;
+      justify-content: center;
+      a:link{
+        @include font-black16
+      }
+      .category-item-box{
+        width: 220px;
+        background-color: #fff;
+        position: relative;
+        &__image{
+          width: 100%;
+          height: 150px;
+          object-fit: contain;
+        }
+        &__name{
+          overflow: hidden;
+          padding: 16px 16px 0;
+          @include font-black16
+        }
+        &__bottom-box{
+          display: flex;
+          justify-content: space-between;
+          padding: 0 16px 16px;
+          .category-item-price{
+            overflow: hidden;
+            font-size: 16px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
+            span{
+              text-decoration: none;
+              color: #333;
+              font-size: 10px;
+            }
+          }
+          .category-item-favorites{
+            @include font-black16
+          }
+        } 
+      }
+      .category-item-box-sold {
+        @include item-sold 
+      }
+    }
+  }
+  .pickup-brand{
+    padding: 80px 40px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__headline{
+      h2{
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+      }
+    }
+    &__link{
+      text-align: center;
+      font-size: 24px;
+      text-decoration: none;
+      color: #3CCACE;
+      margin-bottom: 20px;
+    }
+    &__container{
+      display: flex;
+      justify-content: center;
+      a:link{
+        text-decoration: none;
+        font-size: 16px;
+        color: #333;
+      }
+      .brand-item-box{
+        width: 220px;
+        background-color: #fff;
+        position: relative;
+        &__image{
+          width: 100%;
+          height: 150px;
+          object-fit: contain;
+        }
+        a{
+          text-decoration: none;
+          font-size: 16px;
+          color: #333;
+        }
+        &__name{
+          overflow: hidden;
+          padding: 16px 16px 0;
+          @include font-black16
+        }
+        &__bottom-box{
+          display: flex;
+          justify-content: space-between;
+          padding: 0 16px 16px;
+          .brand-item-price{
+            overflow: hidden;
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
+            span{
+              text-decoration: none;
+              color: #333;
+              font-size: 10px;
+            }
+          }
+          .brand-item-favorites{
+            @include font-black16
+          }
+        }
+      }
+      .brand-item-box-sold {
+        @include item-sold
+      }
+    }
+  }
+}

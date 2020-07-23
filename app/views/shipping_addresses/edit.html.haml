@@ -1,0 +1,54 @@
+.shipping-address-new__wrapper
+  = render 'profiles/header'
+  .body
+    = form_with model: @shipping_address, local: true do |f|
+      .shipping-container
+        .title-box
+          %h2.title-box__text 発送元・お届け先住所変更
+        .name-box.shipping-box-sizing
+          .name-box__label
+            %label お名前
+            %span 必須
+          = f.text_field :shipping_family_name, placeholder: "例）山田", class:"name-box__family-name"
+          = f.text_field :shipping_first_name, placeholder: "例）太郎", class:"name-box__first-name"
+        .kana-name-box.shipping-box-sizing
+          .kana-name-box__label
+            %label ふりがな
+            %span 必須
+          = f.text_field :shipping_family_name_kana, placeholder: "例）やまだ", class:"kana-name-box__family-name"
+          = f.text_field :shipping_first_name_kana, placeholder: "例）たろう", class:"kana-name-box__first-name"
+        .postal-code-box.shipping-box-sizing
+          .postal-code-box__label
+            %label 郵便番号
+            %span 必須
+          = f.text_field :postal_code, placeholder: "例）1234567", class:"postal-code-box__form"
+        .state-province-box.shipping-box-sizing
+          .state-province-box__label
+            %label 都道府県
+            %span 必須
+          = f.collection_select :state_province, Prefecture.all, :name, :name, {prompt: true}, {class: 'state-province-box__form'}
+        .city-box.shipping-box-sizing
+          .city-box__label
+            %label 市区町村
+            %span 必須
+          = f.text_field :city, placeholder: "例）横浜市緑区", class:"city-box__form"
+        .street-box.shipping-box-sizing
+          .street-box__label
+            %label 番地
+            %span 必須
+          = f.text_field :street, placeholder: "例）新南1-1-1", class:"street-box__form"
+        .building-number-box.shipping-box-sizing
+          .building-number-box__label
+            %label 建物名・部屋番号
+            %span 任意
+          = f.text_field :building_number, placeholder: "例）フレーム神南坂4F", class:"building-number-box__form"
+        .phone-number-box.shipping-box-sizing
+          .phone-number-box__label
+            %label 電話番号
+            %span 任意
+          = f.text_field :phone_number, placeholder: "例）090-1234-5678", class:"phone-number-box__form"
+        .submit-box
+          = f.submit "登録する", class:"submit-box__submit-btn"
+        = link_to user_path(current_user.id),class:"shipping-container__back-btn" do
+          戻る
+  = render 'profiles/footer'

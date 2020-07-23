@@ -1,0 +1,583 @@
+* {
+  box-sizing: border-box;
+}
+
+// sale-box内のlabel用
+@mixin headline-font {
+  font-weight: 600;
+}
+
+// sale-box内の必須用
+@mixin required {
+  font-size: 12px;
+  padding: 0 4px;
+  margin-left: 8px;
+  background-color: #ff0211;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+// sale-box内の任意用
+@mixin arbitrary {
+  font-size: 12px;
+  padding: 0 4px;
+  margin-left: 8px;
+  background-color: #bfbfbf;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+// sale-box内の下線用
+@mixin border-bottom {
+  border-bottom: 1px solid #efefef;
+}
+
+// collection_selectのselect用
+@mixin select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #222;
+  font-size: 16px;
+  height: 48px;
+  padding: 0 56px 0 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+// sale-box__saleの出品する、下書きに保存ボタン文字用
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.main-new {
+  color: rgb(51, 51, 51);
+  background-color: rgb(245, 245, 245);
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
+  height: 100%;
+}
+
+.sale-box {
+  background-color: #fff;
+  max-width: 700px;
+  width: 100%;
+  margin: 0px auto;
+
+  &__image {
+    width: 100%;
+    padding: 40px;
+    @include border-bottom
+  }
+
+  &__product {
+    width: 100%;
+    padding: 40px;
+    @include border-bottom
+  }
+
+  &__detail {
+    width: 100%;
+    padding: 40px;
+    @include border-bottom
+  }
+
+  &__delivery {
+    width: 100%;
+    padding: 40px;
+    @include border-bottom
+  }
+
+  &__price {
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+  }
+
+  &__sale {
+    width: 360px;
+    margin: 0px auto 32px;
+  }
+
+  &__guidance {
+    color: rgb(136, 136, 136);
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 24px;
+  }
+
+  &__caution {
+    padding: 0px 40px 64px;
+  }
+}
+
+.image-box {
+  width: 100%;
+
+  &__title {
+    display: flex;
+    align-items: center;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__explain {
+    margin: 16px 0 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    h2 {
+      background-color: rgb(245, 245, 245);
+      height: 150px;
+      width: 620px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed rgb(204, 204, 204);
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+}
+
+.product-box {
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__title-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 48px;
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  &__explain {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__explain-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #222;
+    font-size: 16px;
+    padding: 13px 16px;
+    height: 154px;
+    width: 100%;
+
+    &--count {
+      margin-top: 16px;
+      text-align: right;
+    }
+  }
+}
+
+.detail-box {
+  &__category {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+  .listing-select-wrapper__box--select{
+    @include select
+  }
+
+  &__category-select {
+    select {
+      @include select
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--arbitrary {
+      @include arbitrary
+    }
+  }
+
+  &__brand-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 48px;
+    padding: 0 16px;
+    margin-left: 12px;
+    width: 100%;
+  }
+
+  &__size {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--arbitrary {
+      @include arbitrary
+    }
+  }
+
+  &__size-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 48px;
+    padding: 0 16px;
+    margin-left: 12px;
+    width: 100%;
+  }
+
+  &__condition {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__condition-select {
+    select {
+      @include select
+    }
+  }
+}
+
+.delivery-box {
+  &__burden {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__burden-select {
+    select {
+      @include select
+    }
+  }
+
+  &__method {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+
+  }
+
+  &__method-select {
+    select {
+      @include select
+    }
+  }
+
+  &__shippers {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__shippers-select {
+    select {
+      @include select
+    }
+  }
+
+  &__shipping-day {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 16px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__shipping-day-select {
+    select {
+      @include select
+    }
+  }
+}
+
+.price-box {
+  position: relative;
+
+  &__price {
+    display: flex;
+    align-items: center;
+    padding-bottom: 12px;
+    height: 58px;
+
+    h2 {
+      @include headline-font
+    }
+
+    &--required {
+      @include required
+    }
+  }
+
+  &__form {
+    display: flex;
+    position: absolute;
+    right: 0px;
+
+    &--yen {
+      line-height: 48px;
+      margin-right: 8px;
+    }
+
+    &--input {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      height: 48px;
+      padding: 0 16px;
+      text-align: right;
+      width: 285px;
+    }
+  }
+
+  &__commission {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    height: 70px;
+    position: relative;
+
+    &--result {
+      position: absolute;
+      right: 0;
+    }
+
+    @include border-bottom
+  }
+
+  &__profit {
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    height: 58px;
+    position: relative;
+
+    &--result {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.sale-box {
+  &__sell {
+    background-color: #3CCACE;
+    color: #fff;
+    width: 100%;
+    font-size: 17px;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+
+    p {
+      @include center
+    }
+  }
+
+  &__save {
+    margin-top: 24px;
+    background-color: #ccc;
+    color: #222;
+    width: 100%;
+    font-size: 17px;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    position: relative;
+
+    p {
+      @include center
+    }
+  }
+
+  &__back {
+    margin-top: 24px;
+    color: #3CCACE;
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.post__drop__box__container{
+  display: block;
+  margin: 16px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  //プレビュー表示欄のCSS
+  .prev-content {
+    display: flex;
+    .preview-box {
+      height: 162px;
+      width: 140px;
+      margin: 0 15px 10px 0;
+      .upper-box {
+        height: 112px;
+        width: 100%;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .lower-box {
+        display: flex;
+        text-align: center;
+        .delete-box {
+          color: #00b0ff;
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+        .delete-box__sell{
+          color: #00b0ff;
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  //投稿クリックエリアのCSS
+  .label-content{
+    margin-bottom: 10px;
+    width: 620px;
+    .label-box {
+      display: block;
+      border: 1px dashed #ccc;
+      position: relative;
+      background: #f5f5f5;
+      width: 100%;
+      height: 162px;
+      cursor: pointer;
+      &__text-visible {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: bold;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  // file_fieldのcss
+  .hidden-content {
+    .hidden-field {
+      display: none;
+    }
+    .hidden-checkbox {
+      display: none;
+    }
+  }
+}

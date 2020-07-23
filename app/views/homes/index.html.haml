@@ -1,0 +1,138 @@
+-# ヘッダーは部分テンプレートにする
+= render 'header'
+= render 'sell-btn'
+.toppage-body
+  .main-image
+    .main-image__text-box
+      .main-image__text-box__headline
+        %h2 人生を変えるフリマアプリ
+      .main-image__text-box__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+    .main-icons
+      = link_to '#' do
+        =image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png", class:'main-icons__apple'
+      = link_to '#' do
+        =image_tag "google-play-badge.png", class:'main-icons__google'
+  .reason-box
+    .reason-headlines
+      .reason-headlines__text
+        %h2 FURIMAが選ばれる3つの理由
+    .reasons-container
+      .first-reason
+        .first-reason__image
+          .reason-number__first
+            1
+        .first-reason__headline
+          %span 3分 
+          ですぐに出品
+        .first-reason__text
+          スマホで入力するだけで簡単に出品できる！
+      .second-reason
+        .second-reason__image
+          .reason-number__second
+            2
+        .second-reason__headline
+          %span シンプル 
+          で使いやすい
+        .second-reason__text
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      .third-reason
+        .third-reason__image
+          .reason-number__third
+            3
+        .third-reason__headline
+          手数料 
+          %span 業界最安
+        .third-reason__text
+          最大3%でお得に出品&購入！
+  .sub-image
+    .sub-image__headline
+      %h2 会員数日本一位
+    .sub-image__text
+      FURIMAは、フリマアプリで最も人気。
+      %br
+      出品・購入回数も業界最多です！
+      %br
+      ほしかったあの商品に出会えるかもしれません。
+    .sub-iconbox
+      = link_to '#' do
+        =image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png", class:'sub-iconbox__apple'
+      = link_to '#' do
+        =image_tag "google-play-badge.png", class:'sub-iconbox__google'
+  .feature-box
+    .feature-headline
+      .feature-headline__text
+        %h2 FURIMAの特徴
+    .future-container
+      .first-feature
+        = image_tag "icon-01.png", class:'first-feature__image'
+        .first-feature__headline
+          %h3 簡単に売り買いできる
+        .first-feature__text
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      .second-feature
+        = image_tag "icon-03.png", class:'second-feature__image'
+        .second-feature__headline
+          %h3 売上金は即日振込みに対応
+        .second-feature__text
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      .third-feature
+        = image_tag "icon-04.png", class:'third-feature__image'
+        .third-feature__headline
+          %h3 様々な支払いに対応
+        .third-feature__text
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  .pickup-categories
+    .pickup-categories__headline
+      %h2 ピックアップカテゴリー
+    = link_to '#', class:'pickup-categories__link' do
+      新規投稿商品
+    .pickup-categories__container
+      - @items.each do |item|
+        = link_to item_path(item.id), class: 'category-item-box' do
+          = image_tag item.item_images.first.image.url, class: 'category-item-box__image'
+          .category-item-box__name
+            = item.name
+          .category-item-box__bottom-box
+            .category-item-price
+              = item.price
+              = "円"
+              %br
+              %span (税込)
+            .category-item-favorites
+              = icon('fas','star')
+              1
+            -if item.buyer_id.present? 
+              .category-item-box-sold
+                .category-item-box-sold__inner
+                  SOLD
+                
+  .pickup-brand
+    .pickup-brand__headline
+      %h2 ピックアップブランド
+    = link_to '#', class: 'pickup-brand__link' do
+      アーカイバ
+    .pickup-brand__container
+      - @items.each do |item|
+        = link_to item_path(item.id), class: 'brand-item-box' do
+          = image_tag item.item_images.first.image.url, class: 'brand-item-box__image'
+          .brand-item-box__name
+            = item.name
+          .brand-item-box__bottom-box
+            .brand-item-price
+              = item.price
+              = "円"
+              %br
+              %span (税込)
+            .brand-item-favorites
+              = icon('fas','star')
+              2
+            -if item.buyer_id.present? 
+              .brand-item-box-sold
+                .brand-item-box-sold__inner
+                  SOLD
+                  
+= render 'app-banner'
+= render 'footer'

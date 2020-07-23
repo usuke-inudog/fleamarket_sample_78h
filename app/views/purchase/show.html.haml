@@ -1,0 +1,77 @@
+.purchase-show__wrapper
+  = render 'profiles/header'
+
+  .body
+    .item-container
+      .headline-box.purchase-box
+        %h2.headline-box__text 購入内容の確認
+      .purchase-item-box.purchase-box
+        = image_tag @item.item_images.first.image.url, class:"purchase-item-box__image"
+        .purchase-item-box__contents
+          .purchase-item-box__contents--name
+            = "[商品名] " + @item.name
+          .purchase-item-box__contents--price
+            送料込み (税込) ¥
+            %span
+            = @item.price
+      .total-place-box.purchase-box
+        .total-place-box--title
+          支払い金額
+        .total-place-box--price
+          ¥
+          %span
+          = @item.price
+      .payment-box.purchase-box
+        .payment-box--title
+          .method
+            支払い方法
+          .payment-box--card
+            .card-content
+              - if @default_card_information.blank?
+                = link_to new_user_credit_card_path(current_user.id), method: :get, class: "cord-content__new-btn" do
+                  クレジットカードの登録はこちら
+                  = icon("fas", "chevron-right")
+              - else
+                クレジットカード番号
+                %br
+                .number
+                  = "**** **** **** " + @default_card_information.last4
+                  %br
+                有効期限
+                %br
+                .exp
+                  - exp_month = @default_card_information.exp_month.to_s
+                  - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
+      .shipper-box.purchase-box
+        .shipper-box__contents
+          .shipper-box__contents--title
+            配送先
+          - if @address.blank?
+            = link_to new_shipping_address_path, class:"shipper-box__contents--info" do
+              配送先の登録はこちら
+              = icon("fas", "chevron-right")
+          - else
+            .shipper-box__contents--address-box
+              .shipper-box__contents--address-box--address
+                〒
+                = @address.postal_code.first(3) + "-" + @address.postal_code.last(4)
+                %br
+                = @address.state_province + @address.city + @address.street
+                %br
+                = @address.building_number
+                %br
+                = @address.shipping_family_name + " " + @address.shipping_first_name + " 様"
+              = link_to edit_shipping_address_path(@address.id), class:"shipper-box__edit-btn" do
+                変更する
+                = icon("fas", "chevron-right")
+      .info-box.purchase-box
+        郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+      .purchase-alert
+        = flash[:no_card]
+      .buy-btn-box
+        = form_tag(action: :pay, method: :post, id:@item.id) do
+          %button.buy-btn-box--submit
+            購入する
+
+  = render 'profiles/footer'

@@ -1,0 +1,51 @@
+.item-box__table
+  .item-box__table--tbody
+    %table
+      %tr
+        %th
+          出品者
+        %td
+          = @seller.nickname
+      %tr
+        %th.show-category-box
+          カテゴリー
+        %td.show-category-box
+          = link_to '#' do
+            = @parent.name
+          %br/
+          = link_to '#' do
+            = @child.name
+          %br/
+          = link_to '#' do
+            = @grand_child.name
+      %tr
+        %th
+          ブランド
+        %td
+          = @brand.name
+      %tr
+        %th
+          商品のサイズ
+        %td
+          = @item.size
+      %tr
+        %th
+          商品の状態
+        %td
+          = @item.item_condition
+      %tr
+        %th
+          配送料の負担
+        %td
+          = @item.delivery_burden
+      %tr
+        %th
+          発送元の地域
+        %td
+          = link_to '#' do
+            = @item.shipper
+      %tr
+        %th
+          発送日の目安
+        %td
+          = @item.shipping_day
