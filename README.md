@@ -1,5 +1,22 @@
-# Fleamarket DB設計
+# 接続先情報
+URL http://18.181.128.231/
+## ID/Pass
+ID: team78h
+Pass: shibuya
+## テスト用アカウント等
+### 購入者用
+メールアドレス: sample1@sample.com
+パスワード: 0000000
+購入用カード情報
+番号： 4242424242424242
+期限： 30/12
+セキュリティコード：765
+### 出品者用
+メールアドレス名: sample2@sample.com
+パスワード: 0000000
 
+
+# Fleamarket DB設計
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
